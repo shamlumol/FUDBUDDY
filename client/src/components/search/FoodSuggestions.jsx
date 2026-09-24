@@ -29,7 +29,7 @@ const FoodSuggestions = () => {
           {foodCompanions.map(food => (
             <div key={food.id} className="flex-1 bg-white border border-gray-100 rounded-2xl p-3 shadow-sm hover:shadow-md transition-shadow cursor-pointer">
               <div className="w-full h-24 rounded-xl overflow-hidden mb-3">
-                <img src={food.image} alt={food.name} className="w-full h-full object-cover" />
+                <img loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover" />
               </div>
               <h4 className="text-[13px] font-extrabold text-gray-900 mb-2 leading-tight line-clamp-2">
                 {food.name}
@@ -60,7 +60,7 @@ const FoodSuggestions = () => {
               </div>
             </div>
             <div className="w-16 h-16 rounded-xl overflow-hidden bg-gray-100">
-              <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&q=80&w=200" alt="Veggy Pasta" className="w-full h-full object-cover" />
+              <img loading="lazy" src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&q=80&w=200" alt="Veggy Pasta" className="w-full h-full object-cover" />
             </div>
           </div>
         </div>

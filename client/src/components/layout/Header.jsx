@@ -32,7 +32,7 @@ const Header = () => {
           ) : (
             <>
               <Link to="/" className="flex items-center">
-                <img src="/logo.png" alt="FoodBuddy Logo" className="h-8 object-contain" />
+                <img loading="lazy" src="/logo.png" alt="FoodBuddy Logo" className="h-8 object-contain" />
               </Link>
 
               <div className="flex items-center gap-2 sm:gap-4">
@@ -56,7 +56,7 @@ const Header = () => {
         {/* DESKTOP HEADER */}
         <div className="hidden md:flex items-center justify-between h-20 gap-6">
           <Link to="/" className="flex items-center flex-shrink-0">
-            <img src="/logo.png" alt="FoodBuddy Logo" className="h-10 object-contain" />
+            <img loading="lazy" src="/logo.png" alt="FoodBuddy Logo" className="h-10 object-contain" />
           </Link>
 
           {/* Spacer */}

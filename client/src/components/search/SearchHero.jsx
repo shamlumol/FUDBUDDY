@@ -70,7 +70,7 @@ const SearchHero = () => {
       </div>
 
       <div className="hidden md:flex w-[320px] h-[320px] rounded-full overflow-hidden flex-shrink-0 relative shadow-xl z-10 mt-0 border-[6px] border-white">
-        <img
+        <img loading="lazy"
           src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600"
           alt="Food"
           className="w-full h-full object-cover"

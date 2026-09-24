@@ -41,7 +41,7 @@ const OfferRedemption = () => {
           {step === 1 && (
             <div className="w-full flex flex-col">
               <div className="w-full h-56 bg-gray-200 rounded-2xl mb-6 relative overflow-hidden">
-                <img src={offer.image} alt={offer.discount} className="w-full h-full object-cover" />
+                <img loading="lazy" src={offer.image} alt={offer.discount} className="w-full h-full object-cover" />
               </div>
               
               <h2 className="text-3xl font-extrabold text-gray-900 mb-2">{offer.discount}</h2>
@@ -71,14 +71,14 @@ const OfferRedemption = () => {
           {step === 2 && (
             <div className="w-full text-center flex flex-col items-center mt-6">
               <div className="mb-8 flex justify-center">
-                <img src="/logo.png" alt="Fudbuddy Logo" className="h-8 object-contain" />
+                <img loading="lazy" src="/logo.png" alt="Fudbuddy Logo" className="h-8 object-contain" />
               </div>
               <p className="text-sm text-gray-600 mb-8 max-w-[200px] mx-auto">
                 Show this QR code at the restaurant
               </p>
               
               <div className="w-48 h-48 bg-white border border-gray-100 p-2 mb-8 mx-auto">
-                 <img src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
+                 <img loading="lazy" src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
               </div>
               
               <h3 className="text-2xl font-bold text-gray-900 mb-1">{offer.discount}</h3>
@@ -117,7 +117,7 @@ const OfferRedemption = () => {
           {/* Left Col: Offer Summary */}
           <div className="w-[320px] flex-shrink-0 bg-[#f3f4f6] rounded-3xl p-6 flex flex-col items-center pb-10 border border-gray-100">
              <div className="w-full h-[260px] bg-gray-200 rounded-2xl mb-8 overflow-hidden shadow-sm">
-               <img src={offer.image} alt="Offer" className="w-full h-full object-cover" />
+               <img loading="lazy" src={offer.image} alt="Offer" className="w-full h-full object-cover" />
              </div>
              
              <div className="bg-[#8cc63f] text-white font-extrabold text-[22px] px-10 py-4 rounded-2xl w-full text-center mb-8 shadow-sm">
@@ -159,7 +159,7 @@ const OfferRedemption = () => {
                  </div>
                ) : (
                  <div className="w-[200px] h-[200px] bg-white border border-gray-100 p-2 mb-6">
-                    <img src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
+                    <img loading="lazy" src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
                  </div>
                )}
                

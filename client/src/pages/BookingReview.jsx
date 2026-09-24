@@ -40,7 +40,7 @@ const BookingReview = () => {
         {/* Restaurant Summary */}
         <div className="flex items-center mb-8 bg-gray-50 p-4 rounded-2xl border border-gray-100">
           <div className="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden mr-4">
-            <img src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-cover" />
+            <img loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="font-bold text-gray-900 text-lg mb-1">{restaurant.name}</h2>

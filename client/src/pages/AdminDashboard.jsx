@@ -105,7 +105,7 @@ const AdminDashboard = () => {
                       <td className="p-4 text-sm font-mono text-gray-500">#{rest.id}</td>
                       <td className="p-4">
                         <div className="flex items-center gap-3">
-                          <img src={rest.logo} alt={rest.name} className="w-10 h-10 rounded-lg object-cover bg-gray-100" />
+                          <img loading="lazy" src={rest.logo} alt={rest.name} className="w-10 h-10 rounded-lg object-cover bg-gray-100" />
                           <div>
                             <div className="font-bold text-gray-900">{rest.name}</div>
                             <div className="text-xs text-gray-500">{rest.location} • {rest.contact}</div>

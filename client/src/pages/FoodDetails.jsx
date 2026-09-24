@@ -57,7 +57,7 @@ const FoodDetails = () => {
         {/* Hero Image */}
         <div className="px-4 mb-5">
           <div className="w-full h-56 bg-gray-200 rounded-2xl overflow-hidden shadow-sm flex items-center justify-center">
-            <img src={food.image} alt={food.name} className="w-full h-full object-cover" />
+            <img loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -98,7 +98,7 @@ const FoodDetails = () => {
                 <Link to={`/restaurant/${rest.id}`} key={rest.id} className="flex items-center justify-between group">
                   <div className="flex items-center">
                     <div className="w-[56px] h-[56px] bg-gray-200 rounded-xl flex items-center justify-center mr-4 overflow-hidden shadow-sm">
-                      <img src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
+                      <img loading="lazy" src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-[#112431] text-[15px] mb-0.5">{rest.name}</h4>
@@ -128,7 +128,7 @@ const FoodDetails = () => {
         <div className="bg-white rounded-3xl p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-gray-100 flex gap-10">
           {/* Image */}
           <div className="w-[400px] h-[400px] flex-shrink-0 bg-gray-200 rounded-2xl overflow-hidden shadow-sm">
-            <img src={food.image} alt={food.name} className="w-full h-full object-cover" />
+            <img loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover" />
           </div>
           
           {/* Details */}
@@ -173,7 +173,7 @@ const FoodDetails = () => {
               <div key={rest.id} className={`flex items-center justify-between py-4 ${idx !== restaurantList.length - 1 ? 'border-b border-gray-50' : ''}`}>
                 <div className="flex items-center flex-1">
                   <div className="w-[60px] h-[60px] bg-gray-200 rounded-xl flex items-center justify-center mr-5 overflow-hidden shadow-sm">
-                    <img src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
+                    <img loading="lazy" src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h4 className="font-extrabold text-[#112431] text-[15px] mb-1">{rest.name}</h4>

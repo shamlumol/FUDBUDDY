@@ -8,7 +8,7 @@ const TrendingDishCard = ({ item }) => (
   <div className="group cursor-pointer flex flex-col h-full">
     <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden mb-3 relative bg-gray-50">
       {item.image ? (
-        <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+        <img loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
       ) : (
         <div className="w-full h-full bg-gray-100 flex items-center justify-center">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -115,13 +115,13 @@ const RestaurantDetail = () => {
 
         {/* Hero Image with Fade */}
         <div className="w-full h-[320px] relative mb-12">
-          <img src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
+          <img loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
           
           {/* Floating Logo */}
           <div className="absolute -bottom-8 left-6 w-[100px] h-[100px] bg-white/70 backdrop-blur-md rounded-3xl p-1 shadow-lg shadow-black/5 border border-white">
             <div className="w-full h-full rounded-2xl overflow-hidden bg-white flex items-center justify-center">
-              <img src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
+              <img loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
             </div>
           </div>
         </div>
@@ -231,7 +231,7 @@ const RestaurantDetail = () => {
         
         {/* Desktop Header Image */}
         <div className="w-full h-[320px] relative mb-10">
-           <img src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
+           <img loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
            
            <div className="absolute top-8 right-12 flex space-x-4">
@@ -255,7 +255,7 @@ const RestaurantDetail = () => {
             <div className="flex items-end mb-10 -mt-36 relative z-10">
               <div className="w-36 h-36 bg-white/70 backdrop-blur-md rounded-[2.5rem] p-1.5 shadow-xl shadow-black/5 border border-white mr-8">
                 <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white flex items-center justify-center">
-                  <img src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
+                  <img loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
                 </div>
               </div>
               <div className="pb-4">
@@ -365,7 +365,7 @@ const RestaurantDetail = () => {
                  <div className="absolute inset-0 opacity-[0.05]" style={{backgroundImage: 'radial-gradient(circle at center, #000 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
                  <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <div className="w-14 h-14 bg-white rounded-full p-1 shadow-md mb-2 border-2 border-[#8cc63f] group-hover:scale-110 transition-transform relative z-10">
-                      <img src={restaurant.logo} alt="map pin" className="w-full h-full rounded-full object-cover" />
+                      <img loading="lazy" src={restaurant.logo} alt="map pin" className="w-full h-full rounded-full object-cover" />
                       <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#8cc63f]"></div>
                     </div>
                     <span className="text-gray-500 font-bold text-[11px] group-hover:text-[#8cc63f] transition-colors">View on Map</span>

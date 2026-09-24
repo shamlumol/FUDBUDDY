@@ -37,7 +37,7 @@ const RestaurantCard = ({ restaurant, isCompact = false }) => {
 
       {/* Thumbnail */}
       <div className={`relative bg-white rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center ${isCompact ? 'w-[70px] h-[70px] mr-3' : 'w-24 h-24 mr-4'}`}>
-        <img 
+        <img loading="lazy" 
           src={mainImage} 
           alt={restaurant.name} 
           className="w-full h-full object-contain p-1" 

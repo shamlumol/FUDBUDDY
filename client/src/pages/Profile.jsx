@@ -86,7 +86,7 @@ const Profile = () => {
         <div className="w-[300px] flex-shrink-0 flex flex-col bg-white border border-gray-100 rounded-3xl p-6 shadow-sm">
           <div className="flex items-center mb-8 pb-4">
              <div className="w-8 h-8 rounded-full overflow-hidden mr-3">
-               <img src="/logo.png" alt="Fudbuddy Logo" className="w-full h-full object-contain" />
+               <img loading="lazy" src="/logo.png" alt="Fudbuddy Logo" className="w-full h-full object-contain" />
              </div>
              <h2 className="text-[20px] font-extrabold text-[#8cc63f] tracking-tight">fud<span className="text-[#112431]">buddy</span></h2>
           </div>

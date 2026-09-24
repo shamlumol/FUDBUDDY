@@ -36,7 +36,7 @@ const FoodCard = ({ food, searchQuery = '' }) => {
         </div>
         
         {food.image ? (
-          <img src={food.image} alt={food.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
           <span className="text-xs text-gray-400 font-bold m-auto h-full flex items-center">NO IMAGE</span>
         )}

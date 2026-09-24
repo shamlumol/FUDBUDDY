@@ -54,7 +54,7 @@ const DiningPass = () => {
             Show this QR code at the restaurant
           </p>
           <div className="w-48 h-48 bg-white border-4 border-primary rounded-2xl p-2 mb-4 shadow-sm">
-            <img src={mockQrUrl} alt="QR Code" className="w-full h-full" />
+            <img loading="lazy" src={mockQrUrl} alt="QR Code" className="w-full h-full" />
           </div>
           <p className="text-[10px] text-gray-400">Scan to validate booking and offer</p>
         </div>

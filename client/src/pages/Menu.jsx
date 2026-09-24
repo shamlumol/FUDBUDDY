@@ -127,7 +127,7 @@ const Menu = () => {
                <Link to={`/food/${item.id}`} key={idx} className="flex py-4 border-b border-gray-50 items-start cursor-pointer hover:bg-gray-50 transition-colors">
                  {/* Image */}
                  <div className="w-[85px] h-[85px] bg-gray-200 rounded-xl mr-3 flex-shrink-0 shadow-sm relative overflow-hidden flex items-center justify-center">
-                   {item.image ? <img src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
+                   {item.image ? <img loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 opacity-50"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>}
                  </div>
                  
@@ -207,7 +207,7 @@ const Menu = () => {
                    {items.map((item, itemIdx, arr) => (
                      <Link to={`/food/${item.id}`} key={itemIdx} className={`flex py-5 px-6 items-center hover:bg-gray-50 transition-colors cursor-pointer ${itemIdx !== arr.length - 1 ? 'border-b border-gray-50' : ''}`}>
                        <div className="w-[120px] h-[80px] bg-gray-200 rounded-xl mr-5 flex-shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
-                         {item.image ? <img src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
+                         {item.image ? <img loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 opacity-50"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>}
                        </div>
                        <div className="flex-1 pr-6 flex flex-col h-[80px] justify-between py-0.5">
