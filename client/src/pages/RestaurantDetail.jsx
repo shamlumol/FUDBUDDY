@@ -7,7 +7,13 @@ import { toast } from '../components/ui/Toast';
 const TrendingDishCard = ({ item }) => (
   <div className="group cursor-pointer flex flex-col h-full">
     <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden mb-3 relative bg-gray-50">
-      <img src={item.image || 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=300'} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+      {item.image ? (
+        <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+      ) : (
+        <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+        </div>
+      )}
       <div className="absolute top-2 left-2 z-10 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1 shadow-sm">
          <div className={`w-2.5 h-2.5 rounded-sm border ${item.isVeg ? 'border-green-600' : 'border-red-600'} flex items-center justify-center bg-white`}>
            <div className={`w-1 h-1 rounded-full ${item.isVeg ? 'bg-green-600' : 'bg-red-600'}`}></div>
@@ -114,8 +120,8 @@ const RestaurantDetail = () => {
           
           {/* Floating Logo */}
           <div className="absolute -bottom-8 left-6 w-[100px] h-[100px] bg-white/70 backdrop-blur-md rounded-3xl p-1 shadow-lg shadow-black/5 border border-white">
-            <div className="w-full h-full rounded-2xl overflow-hidden bg-white">
-              <img src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-cover" />
+            <div className="w-full h-full rounded-2xl overflow-hidden bg-white flex items-center justify-center">
+              <img src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
             </div>
           </div>
         </div>
@@ -134,9 +140,9 @@ const RestaurantDetail = () => {
 
           <div className="flex flex-wrap gap-2 mb-8">
             {(restaurant.tags || []).filter(tag => !restaurant.specialties?.map(s => s.toLowerCase()).includes(tag.toLowerCase())).slice(0, 5).map((tag, idx) => (
-              <span key={idx} className="bg-gray-50 text-gray-600 px-4 py-2 text-[12px] rounded-full font-bold">
+              <button key={idx} className="bg-gray-50 text-gray-600 px-3 py-1.5 text-[10px] md:text-[12px] md:px-4 md:py-2 rounded-lg md:rounded-full font-bold hover:bg-gray-100 transition-colors">
                 {tag}
-              </span>
+              </button>
             ))}
           </div>
 
@@ -170,11 +176,11 @@ const RestaurantDetail = () => {
               </p>
             </div>
 
-            {restaurant.specialties && restaurant.specialties.length > 0 && (
+            {true && (
               <div className="border-t border-gray-200 pt-5">
                 <h3 className="text-[12px] font-extrabold text-gray-400 uppercase tracking-widest mb-3">House Specialties</h3>
                 <ul className="space-y-2">
-                  {restaurant.specialties.map((spec, idx) => (
+                  {['Takeaway', 'Dine-in', 'Online Order', ...(restaurant.specialties || [])].map((spec, idx) => (
                     <li key={idx} className="flex items-center text-[#112431] font-bold text-[14px] tracking-tight">
                       <div className="w-1.5 h-1.5 rounded-full bg-[#8cc63f] mr-3"></div>
                       {spec}
@@ -248,8 +254,8 @@ const RestaurantDetail = () => {
           <div className="flex-1">
             <div className="flex items-end mb-10 -mt-36 relative z-10">
               <div className="w-36 h-36 bg-white/70 backdrop-blur-md rounded-[2.5rem] p-1.5 shadow-xl shadow-black/5 border border-white mr-8">
-                <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white">
-                  <img src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-cover" />
+                <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white flex items-center justify-center">
+                  <img src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
                 </div>
               </div>
               <div className="pb-4">
@@ -264,25 +270,27 @@ const RestaurantDetail = () => {
 
             <div className="flex gap-2 mb-12">
               {(restaurant.tags || []).filter(tag => !restaurant.specialties?.map(s => s.toLowerCase()).includes(tag.toLowerCase())).slice(0, 5).map((tag, idx) => (
-                <span key={idx} className="bg-gray-50 text-gray-600 px-5 py-2 text-xs rounded-full font-bold tracking-wide">{tag}</span>
+                <button key={idx} className="bg-gray-50 text-gray-600 px-4 py-2 text-[12px] rounded-lg font-bold tracking-wide hover:bg-gray-100 transition-colors">
+                  {tag}
+                </button>
               ))}
             </div>
 
-            <div className="bg-[#f8f9fa] border border-gray-100 rounded-3xl p-8 mb-10">
-              <div className="mb-8">
-                <h3 className="text-lg font-extrabold text-[#112431] mb-3 tracking-tight">About Us</h3>
-                <p className="text-gray-500 font-medium leading-relaxed text-[15px] max-w-3xl">
+            <div className="bg-[#f8f9fa] border border-gray-100 rounded-2xl p-6 mb-8">
+              <div className="mb-5">
+                <h3 className="text-base font-extrabold text-[#112431] mb-2 tracking-tight">About Us</h3>
+                <p className="text-gray-500 font-medium leading-relaxed text-[13px] max-w-3xl">
                   {restaurant.about}
                 </p>
               </div>
 
-              {restaurant.specialties && restaurant.specialties.length > 0 && (
-                <div className="border-t border-gray-200 pt-6 flex items-center gap-6">
-                  <h3 className="text-xs font-extrabold text-gray-400 uppercase tracking-widest border-r border-gray-200 pr-6">Specialties</h3>
-                  <div className="flex items-center gap-6 flex-wrap">
-                    {restaurant.specialties.map((spec, idx) => (
-                      <div key={idx} className="flex items-center text-[#112431] font-bold text-[14px] tracking-tight">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#8cc63f] mr-3 shadow-sm shadow-[#8cc63f]/50"></div>
+              {true && (
+                <div className="border-t border-gray-200 pt-4 flex items-center gap-4">
+                  <h3 className="text-[10px] font-extrabold text-gray-400 uppercase tracking-widest border-r border-gray-200 pr-4">Specialties</h3>
+                  <div className="flex items-center gap-4 flex-wrap">
+                    {['Takeaway', 'Dine-in', 'Online Order', ...(restaurant.specialties || [])].map((spec, idx) => (
+                      <div key={idx} className="flex items-center text-[#112431] font-bold text-[12px] tracking-tight">
+                        <div className="w-1 h-1 rounded-full bg-[#8cc63f] mr-2 shadow-sm shadow-[#8cc63f]/50"></div>
                         {spec}
                       </div>
                     ))}

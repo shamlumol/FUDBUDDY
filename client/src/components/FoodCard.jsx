@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Clock, Star, Plus } from 'lucide-react';
+import { Heart, Clock, Star, ArrowRight } from 'lucide-react';
 import { highlightText } from '../utils/highlight';
 
 const FoodCard = ({ food, searchQuery = '' }) => {
@@ -24,23 +24,8 @@ const FoodCard = ({ food, searchQuery = '' }) => {
     setIsSaved(!isSaved);
   };
 
-  const handleAddToWishlist = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    toggleSave(e);
-    alert(`${food.name} ${isSaved ? 'removed from' : 'added to'} wishlist!`);
-  };
-
   return (
     <Link to={`/food/${food.id}`} className="flex flex-col bg-white rounded-[24px] border border-gray-100 hover:border-green-200 p-3 group hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 relative h-full">
-      {/* Favorite Icon */}
-      <button 
-        onClick={toggleSave}
-        className="absolute top-5 right-5 p-2 rounded-full bg-white/80 backdrop-blur-sm z-20 shadow-sm hover:bg-white transition-colors"
-      >
-        <Heart size={16} className={`${isSaved ? 'fill-red-500 text-red-500' : 'text-gray-400 hover:text-red-500'} transition-colors`} />
-      </button>
-
       {/* Image & Veg Indicator */}
       <div className="w-full aspect-[4/3] bg-gray-50 rounded-2xl mb-4 relative overflow-hidden flex-shrink-0">
         <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md flex items-center gap-1.5 shadow-sm">
@@ -85,15 +70,15 @@ const FoodCard = ({ food, searchQuery = '' }) => {
             </div>
           </div>
           
-          {/* Price & Add to Wishlist */}
+          {/* Price & View Details */}
           <div className="flex items-center justify-between pt-3 border-t border-gray-50">
             <span className="text-lg font-extrabold text-[#112431]">{food.price || `₹${food.priceValue || 199}`}</span>
             
             <button 
-              onClick={handleAddToWishlist}
-              className="bg-[#112431] hover:bg-[#8cc63f] text-white rounded-full p-2.5 transition-colors shadow-sm flex items-center justify-center group/btn"
+              onClick={toggleSave}
+              className="p-2.5 rounded-full hover:bg-red-50 transition-colors flex items-center justify-center group/wishlist"
             >
-              <Plus size={16} strokeWidth={3} className="group-hover/btn:rotate-90 transition-transform duration-300" />
+              <Heart size={20} className={`${isSaved ? 'fill-red-500 text-red-500' : 'text-gray-400 group-hover/wishlist:text-red-500'} transition-colors`} />
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { ArrowLeft, Heart, Share2, Star } from 'lucide-react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import { foods, restaurants } from '../data/mockData';
@@ -8,12 +8,26 @@ import { toast } from '../components/ui/Toast';
 const FoodDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const food = foods.find(f => f.id === parseInt(id)) || foods[0];
+  const restaurantList = restaurants; // Show all restaurants
+
+  const [isFavorite, setIsFavorite] = useState(() => {
+    const saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    return saved.some(f => f.id === food.id);
+  });
+  
+  const toggleSave = () => {
+    let saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    if (isFavorite) {
+      saved = saved.filter(f => f.id !== food.id);
+    } else {
+      saved.push(food);
+    }
+    localStorage.setItem('savedFoods', JSON.stringify(saved));
+    setIsFavorite(!isFavorite);
+  };
   
   const handleShare = () => toast("Link copied to clipboard!");
-  
-  const food = foods.find(f => f.id === parseInt(id)) || foods[0];
-  const restaurantList = restaurants.slice(0, 3); // Mocking multiple availability
 
   return (
     <div className="w-full bg-white md:bg-[#f9fafb] min-h-screen pb-24 md:pb-10 font-sans">
@@ -31,7 +45,7 @@ const FoodDetails = () => {
             </svg>
           </button>
           <div className="flex items-center gap-4">
-            <button onClick={() => setIsFavorite(!isFavorite)} className="text-[#112431] hover:text-[#8cc63f] transition-colors">
+            <button onClick={toggleSave} className="text-[#112431] hover:text-[#8cc63f] transition-colors">
               <Heart size={24} className={isFavorite ? "fill-[#8cc63f] text-[#8cc63f]" : ""} />
             </button>
             <button onClick={handleShare} className="text-[#112431]">
@@ -63,7 +77,7 @@ const FoodDetails = () => {
           </div>
 
           <p className="text-[14px] text-[#3a444a] font-medium leading-relaxed mb-6">
-            {food.desc || "Juicy grilled beef patty with cheese, lettuce and signature sauce."}
+            {food.desc || `A delicious serving of ${food.name} available at ${food.restaurantName}.`}
           </p>
 
           <div className="flex flex-wrap gap-2.5 mb-8">
@@ -121,7 +135,7 @@ const FoodDetails = () => {
           <div className="flex-1 pt-4">
             <div className="flex justify-between items-start mb-4">
               <h1 className="text-[32px] font-extrabold text-[#112431]">{food.name}</h1>
-              <button onClick={() => setIsFavorite(!isFavorite)} className="text-[#3a444a] hover:text-[#8cc63f] transition-colors bg-[#f3f4f6] p-3 rounded-full">
+              <button onClick={toggleSave} className="text-[#3a444a] hover:text-[#8cc63f] transition-colors bg-[#f3f4f6] p-3 rounded-full">
                 <Heart size={24} className={isFavorite ? "fill-[#8cc63f] text-[#8cc63f]" : ""} />
               </button>
             </div>
@@ -137,7 +151,7 @@ const FoodDetails = () => {
             </p>
             
             <p className="text-[16px] text-[#3a444a] font-medium leading-relaxed mb-10 max-w-2xl">
-              {food.desc || "Juicy grilled beef patty with cheese, lettuce and signature sauce."}
+              {food.desc || `A delicious serving of ${food.name} available at ${food.restaurantName}.`}
             </p>
 
             <div className="flex flex-wrap gap-3">

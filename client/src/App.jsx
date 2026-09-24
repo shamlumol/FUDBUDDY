@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/layout/Header';
 import MobileBottomNav from './components/layout/MobileBottomNav';
 import { ToastContainer } from './components/ui/Toast';
@@ -19,10 +19,22 @@ import BookTable from './pages/BookTable';
 import BookingReview from './pages/BookingReview';
 import BookingConfirmation from './pages/BookingConfirmation';
 import DiningPass from './pages/DiningPass';
+import Wishlist from './pages/Wishlist';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
     <div className="bg-white min-h-screen relative flex flex-col w-full font-sans text-gray-900">
+      <ScrollToTop />
       <ToastContainer />
       {/* Header handles both Desktop and Mobile top views */}
       <Header />
@@ -48,6 +60,7 @@ function App() {
           <Route path="/dining" element={<Dining />} />
           <Route path="/food/:id" element={<FoodDetails />} />
           <Route path="/redeem/:offerId" element={<OfferRedemption />} />
+          <Route path="/wishlist" element={<Wishlist />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </div>

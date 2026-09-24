@@ -35,9 +35,12 @@ const Header = () => {
                 <img src="/logo.png" alt="FoodBuddy Logo" className="h-8 object-contain" />
               </Link>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 sm:gap-4">
                 <Link to="/offers" className="flex items-center gap-1.5 px-3 py-1.5 bg-[#f0f8e8] text-[#8cc63f] rounded-full text-xs font-bold hover:bg-[#e2f0d9] transition-colors">
                   <span>OFFERS</span>
+                </Link>
+                <Link to="/wishlist" className="w-8 h-8 flex items-center justify-center text-[#8cc63f] rounded-full hover:bg-gray-50">
+                  <Heart size={20} />
                 </Link>
                 <button className="w-8 h-8 flex items-center justify-center text-gray-600 rounded-full hover:bg-gray-50">
                   <Bell size={20} />
@@ -64,8 +67,11 @@ const Header = () => {
               <Tag size={16} />
               <span>OFFERS</span>
             </Link>
-            <button className="w-10 h-10 flex items-center justify-center text-[#8cc63f] rounded-full hover:bg-gray-50">
+            <Link to="/wishlist" className="w-10 h-10 flex items-center justify-center text-[#8cc63f] rounded-full hover:bg-gray-50">
               <Heart size={20} />
+            </Link>
+            <button className="w-10 h-10 flex items-center justify-center text-gray-600 rounded-full hover:bg-gray-50">
+              <Bell size={20} />
             </button>
             <Link to="/profile" className="w-10 h-10 flex items-center justify-center text-gray-600 rounded-full hover:bg-gray-50">
               <User size={20} />

@@ -32,7 +32,7 @@ const isFuzzyMatch = (text, keyword) => {
   if (!text) return false;
   text = text.toLowerCase();
   keyword = keyword.toLowerCase();
-  if (text.includes(keyword)) return true;
+  if (text.replace(/[\\s,.-]+/g, '').includes(keyword.replace(/[\\s,.-]+/g, ''))) return true;
   
   // Allow typos even for smaller words (>= 3 chars)
   if (keyword.length >= 3) {
@@ -231,7 +231,7 @@ export const getFoods = async (params = {}) => {
       if (c === 'noodles') return name.includes('noodle') || name.includes('chow mein');
       if (c === 'soups') return name.includes('soup');
       if (c === 'salads') return name.includes('salad');
-      if (c === 'drinks') return /(juice|shake|mocktail|coffee|tea|beverage|champagne|soda|mojito|lemonade)/.test(name);
+      if (c === 'drinks') return /(juice|shake|mocktail|coffee|\\btea\\b|beverage|champagne|soda|mojito|lemonade)/.test(name) || catName.includes('drink') || catName.includes('beverage');
       if (c === 'seafood') return /(fish|prawn|crab|squid|sea bream)/.test(name) || catName.includes('seafood');
       if (c === 'indian') return catName.includes('indian');
       if (c === 'chinese') return catName.includes('chinese') || name.includes('manchurian') || name.includes('schezwan') || name.includes('chilli');

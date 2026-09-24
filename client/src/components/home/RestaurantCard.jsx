@@ -29,8 +29,8 @@ const RestaurantCard = ({ restaurant, layout = 'vertical', showHeart = false, sh
             {highlightText(restaurant.name, searchQuery)}
           </h4>
           <div className="flex items-center gap-3 text-[11px] mb-1">
-            <span className="text-gray-500 font-medium truncate max-w-[120px]">{restaurant.location}</span>
-            <div className="flex items-center text-[13px] text-gray-500 font-medium truncate">
+            <span className="text-gray-500 font-medium truncate max-w-[120px] shrink-0">{restaurant.location}</span>
+            <div className="flex items-center text-[13px] text-gray-500 font-medium truncate flex-1 min-w-0">
               <span className="truncate">
                 {Array.isArray(restaurant.cuisines) ? restaurant.cuisines.join(' · ') : restaurant.cuisines}
               </span>

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Star, MapPin, Heart } from 'lucide-react';
 
 const RestaurantCard = ({ restaurant, isCompact = false }) => {
@@ -36,11 +36,11 @@ const RestaurantCard = ({ restaurant, isCompact = false }) => {
       </button>
 
       {/* Thumbnail */}
-      <div className={`relative bg-gray-50 rounded-xl overflow-hidden flex-shrink-0 ${isCompact ? 'w-[70px] h-[70px] mr-3' : 'w-24 h-24 mr-4'}`}>
+      <div className={`relative bg-white rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center ${isCompact ? 'w-[70px] h-[70px] mr-3' : 'w-24 h-24 mr-4'}`}>
         <img 
           src={mainImage} 
           alt={restaurant.name} 
-          className="w-full h-full object-cover" 
+          className="w-full h-full object-contain p-1" 
         />
       </div>
 
@@ -58,7 +58,7 @@ const RestaurantCard = ({ restaurant, isCompact = false }) => {
           <span className="mr-2 text-gray-900">{restaurant.rating || 4.8}</span>
           {!isCompact && (
             <>
-              <span className="text-gray-300 mx-1">â€¢</span>
+              <span className="text-gray-300 mx-1">·</span>
               <span className="truncate">{restaurant.cuisines || restaurant.tags?.join(', ')}</span>
             </>
           )}

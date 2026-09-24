@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Search, MapPin, Heart } from 'lucide-react';
+import { Search, MapPin, Heart, Bell } from 'lucide-react';
 import { userProfile } from '../data/mockData';
 
 const TopNavigation = () => {
@@ -37,9 +37,12 @@ const TopNavigation = () => {
         <Link to="/offers" className="bg-primary text-white text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-wider hover:bg-red-600 transition-colors">
           Offers
         </Link>
-        <Link to="/profile" className="text-gray-600 hover:text-primary transition-colors">
+        <Link to="/wishlist" className="text-gray-600 hover:text-primary transition-colors">
           <Heart size={20} />
         </Link>
+        <button className="text-gray-600 hover:text-primary transition-colors">
+          <Bell size={20} />
+        </button>
         <Link to="/profile" className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden border border-gray-200">
           <img src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
         </Link>

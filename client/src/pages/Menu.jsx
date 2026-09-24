@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Plus, Search as SearchIcon } from 'lucide-react';
+import { ArrowLeft, Search as SearchIcon, Heart } from 'lucide-react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { getRestaurantById, getRestaurantMenu } from '../services/api';
 import { toast } from '../components/ui/Toast';
@@ -11,6 +11,29 @@ const Menu = () => {
   const [restaurant, setRestaurant] = useState(null);
   const [restaurantFoods, setRestaurantFoods] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [savedFoodIds, setSavedFoodIds] = useState(() => {
+    const saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    return saved.map(f => f.id);
+  });
+
+  const handleToggleWishlist = (e, food) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    const isSaved = saved.some(f => f.id === food.id);
+    
+    if (isSaved) {
+      saved = saved.filter(f => f.id !== food.id);
+      setSavedFoodIds(prev => prev.filter(id => id !== food.id));
+      toast('Removed from wishlist!');
+    } else {
+      saved.push(food);
+      setSavedFoodIds(prev => [...prev, food.id]);
+      toast('Added to wishlist!');
+    }
+    localStorage.setItem('savedFoods', JSON.stringify(saved));
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -120,10 +143,10 @@ const Menu = () => {
                        <span className="text-[10px] mr-0.5">SR</span>{(item.price || '').replace('SR', '').trim()}
                      </p>
                      <button 
-                       onClick={(e) => { e.preventDefault(); toast('Added to wish list!'); }}
-                       className="w-7 h-7 rounded-lg bg-[#8cc63f] text-white flex items-center justify-center flex-shrink-0 shadow-sm hover:bg-[#7ab135] transition-colors"
+                       onClick={(e) => handleToggleWishlist(e, item)}
+                       className="p-2 rounded-full hover:bg-red-50 transition-colors flex items-center justify-center flex-shrink-0 group/wishlist"
                      >
-                       <Plus size={16} strokeWidth={3} />
+                       <Heart size={20} className={`${savedFoodIds.includes(item.id) ? 'fill-red-500 text-red-500' : 'text-gray-400 group-hover/wishlist:text-red-500'} transition-colors`} />
                      </button>
                    </div>
                  </div>
@@ -197,10 +220,10 @@ const Menu = () => {
                          </p>
                        </div>
                        <button 
-                         onClick={(e) => { e.preventDefault(); toast('Added to wish list!'); }}
-                         className="w-8 h-8 rounded-lg bg-[#8cc63f] text-white flex items-center justify-center flex-shrink-0 shadow-sm hover:bg-[#7ab135] transition-colors"
+                         onClick={(e) => handleToggleWishlist(e, item)}
+                         className="p-2 rounded-full hover:bg-red-50 transition-colors flex items-center justify-center flex-shrink-0 group/wishlist"
                        >
-                         <Plus size={18} strokeWidth={3} />
+                         <Heart size={24} className={`${savedFoodIds.includes(item.id) ? 'fill-red-500 text-red-500' : 'text-gray-400 group-hover/wishlist:text-red-500'} transition-colors`} />
                        </button>
                      </Link>
                    ))}
