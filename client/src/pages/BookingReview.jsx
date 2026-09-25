@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import { ArrowLeft, MapPin } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -10,6 +11,7 @@ const BookingReview = () => {
   if (!restaurant || !bookingDetails) {
     return (
       <div className="p-10 text-center">
+      <Breadcrumbs items={[{ label: 'Booking Review' }]} />
         <p>Invalid booking session.</p>
         <button onClick={() => navigate('/')} className="text-primary mt-4">Go Home</button>
       </div>
@@ -40,7 +42,7 @@ const BookingReview = () => {
         {/* Restaurant Summary */}
         <div className="flex items-center mb-8 bg-gray-50 p-4 rounded-2xl border border-gray-100">
           <div className="w-16 h-16 bg-gray-200 rounded-xl overflow-hidden mr-4">
-            <img loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-cover" />
+            <img decoding="async" loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="font-bold text-gray-900 text-lg mb-1">{restaurant.name}</h2>

@@ -1,3 +1,4 @@
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import React, { useState } from 'react';
 import { ArrowLeft, Heart, Share2, Star } from 'lucide-react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
@@ -12,25 +13,34 @@ const FoodDetails = () => {
   const restaurantList = restaurants; // Show all restaurants
 
   const [isFavorite, setIsFavorite] = useState(() => {
-    const saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const saved = JSON.parse(localStorage.getItem(`fudbuddy_savedFoods_${userEmail}`) || '[]');
     return saved.some(f => f.id === food.id);
   });
   
   const toggleSave = () => {
-    let saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const storageKey = `fudbuddy_savedFoods_${userEmail}`;
+    let saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
     if (isFavorite) {
       saved = saved.filter(f => f.id !== food.id);
     } else {
       saved.push(food);
     }
-    localStorage.setItem('savedFoods', JSON.stringify(saved));
+    localStorage.setItem(storageKey, JSON.stringify(saved));
     setIsFavorite(!isFavorite);
   };
   
-  const handleShare = () => toast("Link copied to clipboard!");
+  const handleShare = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+    }
+    toast("Link copied to clipboard!");
+  };
 
   return (
     <div className="w-full bg-white md:bg-[#f9fafb] min-h-screen pb-24 md:pb-10 font-sans">
+      <Breadcrumbs items={[{ label: 'Food Details' }]} />
       
       {/* ========================================================= */}
       {/* MOBILE LAYOUT                                             */}
@@ -57,7 +67,7 @@ const FoodDetails = () => {
         {/* Hero Image */}
         <div className="px-4 mb-5">
           <div className="w-full h-56 bg-gray-200 rounded-2xl overflow-hidden shadow-sm flex items-center justify-center">
-            <img loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover" />
+            <img decoding="async" loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -98,7 +108,7 @@ const FoodDetails = () => {
                 <Link to={`/restaurant/${rest.id}`} key={rest.id} className="flex items-center justify-between group">
                   <div className="flex items-center">
                     <div className="w-[56px] h-[56px] bg-gray-200 rounded-xl flex items-center justify-center mr-4 overflow-hidden shadow-sm">
-                      <img loading="lazy" src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
+                      <img decoding="async" loading="lazy" src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h4 className="font-extrabold text-[#112431] text-[15px] mb-0.5">{rest.name}</h4>
@@ -128,7 +138,7 @@ const FoodDetails = () => {
         <div className="bg-white rounded-3xl p-8 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] border border-gray-100 flex gap-10">
           {/* Image */}
           <div className="w-[400px] h-[400px] flex-shrink-0 bg-gray-200 rounded-2xl overflow-hidden shadow-sm">
-            <img loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover" />
+            <img decoding="async" loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover" />
           </div>
           
           {/* Details */}
@@ -173,7 +183,7 @@ const FoodDetails = () => {
               <div key={rest.id} className={`flex items-center justify-between py-4 ${idx !== restaurantList.length - 1 ? 'border-b border-gray-50' : ''}`}>
                 <div className="flex items-center flex-1">
                   <div className="w-[60px] h-[60px] bg-gray-200 rounded-xl flex items-center justify-center mr-5 overflow-hidden shadow-sm">
-                    <img loading="lazy" src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
+                    <img decoding="async" loading="lazy" src={rest.logo} alt={rest.name} className="w-full h-full object-cover" />
                   </div>
                   <div>
                     <h4 className="font-extrabold text-[#112431] text-[15px] mb-1">{rest.name}</h4>

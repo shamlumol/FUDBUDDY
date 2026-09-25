@@ -10,7 +10,7 @@
     max-width: 100%;
   }
   body {
-    @apply bg-background text-gray-900;
+    @apply bg-gray-50 text-gray-900;
   }
 }
 
@@ -21,4 +21,21 @@
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Hide Google Translate Bar */
+body {
+    top: 0px !important; 
+}
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+.skiptranslate iframe {
+    display: none !important;
+}
+#goog-gt-tt {
+    display: none !important;
+}
+.goog-te-spinner-pos {
+    display: none !important;
 }

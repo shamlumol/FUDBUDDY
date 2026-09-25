@@ -8,7 +8,7 @@ const OfferCard = ({ offer }) => {
       className="group flex flex-col bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-md hover:border-red-100 transition-all cursor-pointer flex-shrink-0 w-[240px] md:w-auto"
     >
       <div className="w-full h-32 bg-gray-50 relative overflow-hidden">
-        <img 
+        <img decoding="async" 
           src={offer.image} 
           alt={offer.title} 
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 

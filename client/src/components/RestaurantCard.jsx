@@ -5,21 +5,25 @@ const RestaurantCard = ({ restaurant, isCompact = false }) => {
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('savedRestaurants') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const saved = JSON.parse(localStorage.getItem(`fudbuddy_savedRestaurants_${userEmail}`) || '[]');
     setIsSaved(saved.some(r => r.id === restaurant.id));
   }, [restaurant.id]);
 
   const toggleSave = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    let saved = JSON.parse(localStorage.getItem('savedRestaurants') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const storageKey = `fudbuddy_savedRestaurants_${userEmail}`;
+    let saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
     if (isSaved) {
       saved = saved.filter(r => r.id !== restaurant.id);
     } else {
       saved.push(restaurant);
     }
-    localStorage.setItem('savedRestaurants', JSON.stringify(saved));
+    localStorage.setItem(storageKey, JSON.stringify(saved));
     setIsSaved(!isSaved);
+    window.dispatchEvent(new Event('storage'));
   };
 
   const mainImage = restaurant.images?.[0] || restaurant.headerImage || restaurant.logo;
@@ -37,7 +41,7 @@ const RestaurantCard = ({ restaurant, isCompact = false }) => {
 
       {/* Thumbnail */}
       <div className={`relative bg-white rounded-xl overflow-hidden flex-shrink-0 flex items-center justify-center ${isCompact ? 'w-[70px] h-[70px] mr-3' : 'w-24 h-24 mr-4'}`}>
-        <img loading="lazy" 
+        <img decoding="async" loading="lazy" 
           src={mainImage} 
           alt={restaurant.name} 
           className="w-full h-full object-contain p-1" 

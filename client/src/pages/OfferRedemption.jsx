@@ -1,7 +1,10 @@
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import React, { useState } from 'react';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { offersData, restaurants } from '../data/mockData';
+import { toast } from '../components/ui/Toast';
+import AuthModal from '../components/auth/AuthModal';
 
 const OfferRedemption = () => {
   const navigate = useNavigate();
@@ -10,17 +13,66 @@ const OfferRedemption = () => {
   const offer = offersData.find(o => o.id === parseInt(offerId)) || offersData[0];
   const restaurant = restaurants.find(r => r.id === offer?.restaurantId) || restaurants[0];
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isDemoLoggedIn, setIsDemoLoggedIn] = useState(
+    !!localStorage.getItem('fudbuddy_current_user')
+  );
+  const isLoggedIn = isDemoLoggedIn;
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  
+  const loginWithRedirect = () => {
+    setShowAuthModal(true);
+  };
+  
+  const handleAuthSuccess = () => {
+    setShowAuthModal(false);
+    setIsDemoLoggedIn(true);
+    toast('Verifying Offer...');
+    setTimeout(() => {
+      claimOfferSecurely();
+    }, 1000);
+  };
+  
   const [step, setStep] = useState(1);
-  // 1: Offer detail, 2: QR Code
 
-  const handleClaim = () => setStep(2);
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    toast('Offer link copied to clipboard!');
+  };
+
+  const handleDownload = async () => {
+    toast('Downloading QR Code...');
+    const imgUrl = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=fudbuddy-offer-${offer.id}`;
+    try {
+      const response = await fetch(imgUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `fudbuddy-qr-${offer.id}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      // Fallback if CORS fails
+      window.open(imgUrl, '_blank');
+    }
+  };
+
+  const claimOfferSecurely = async () => {
+    // Demo bypass: just immediately claim the offer for the presentation!
+    toast('Offer verified and claimed!');
+    setStep(2);
+  };
+
+  const handleClaim = () => claimOfferSecurely();
   const handleScan = () => setStep(3);
 
   if (!offer) return <div className="p-10 text-center">Offer not found.</div>;
 
   return (
     <div className="w-full bg-background min-h-screen pb-24 md:pb-10 font-sans">
+      <Breadcrumbs items={[{ label: 'Offers', path: '/offers' }, { label: 'Redeem Offer' }]} />
       
       {/* ========================================================= */}
       {/* MOBILE LAYOUT                                             */}
@@ -41,7 +93,7 @@ const OfferRedemption = () => {
           {step === 1 && (
             <div className="w-full flex flex-col">
               <div className="w-full h-56 bg-gray-200 rounded-2xl mb-6 relative overflow-hidden">
-                <img loading="lazy" src={offer.image} alt={offer.discount} className="w-full h-full object-cover" />
+                <img decoding="async" loading="lazy" src={offer.image} alt={offer.discount} className="w-full h-full object-cover" />
               </div>
               
               <h2 className="text-3xl font-extrabold text-gray-900 mb-2">{offer.discount}</h2>
@@ -56,7 +108,7 @@ const OfferRedemption = () => {
               </div>
               
               {!isLoggedIn ? (
-                <button onClick={() => setIsLoggedIn(true)} className="w-full bg-primary text-white font-bold text-sm py-4 rounded-xl mb-4">
+                <button onClick={() => loginWithRedirect()} className="w-full bg-primary text-white font-bold text-sm py-4 rounded-xl mb-4">
                   Login to Claim
                 </button>
               ) : (
@@ -71,14 +123,14 @@ const OfferRedemption = () => {
           {step === 2 && (
             <div className="w-full text-center flex flex-col items-center mt-6">
               <div className="mb-8 flex justify-center">
-                <img loading="lazy" src="/logo.png" alt="Fudbuddy Logo" className="h-8 object-contain" />
+                <img decoding="async" loading="lazy" src="/logo.png" alt="Fudbuddy Logo" className="h-8 object-contain" />
               </div>
               <p className="text-sm text-gray-600 mb-8 max-w-[200px] mx-auto">
                 Show this QR code at the restaurant
               </p>
               
               <div className="w-48 h-48 bg-white border border-gray-100 p-2 mb-8 mx-auto">
-                 <img loading="lazy" src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
+                 <img decoding="async" loading="lazy" src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
               </div>
               
               <h3 className="text-2xl font-bold text-gray-900 mb-1">{offer.discount}</h3>
@@ -117,7 +169,7 @@ const OfferRedemption = () => {
           {/* Left Col: Offer Summary */}
           <div className="w-[320px] flex-shrink-0 bg-[#f3f4f6] rounded-3xl p-6 flex flex-col items-center pb-10 border border-gray-100">
              <div className="w-full h-[260px] bg-gray-200 rounded-2xl mb-8 overflow-hidden shadow-sm">
-               <img loading="lazy" src={offer.image} alt="Offer" className="w-full h-full object-cover" />
+               <img decoding="async" loading="lazy" src={offer.image} alt="Offer" className="w-full h-full object-cover" />
              </div>
              
              <div className="bg-[#8cc63f] text-white font-extrabold text-[22px] px-10 py-4 rounded-2xl w-full text-center mb-8 shadow-sm">
@@ -153,13 +205,13 @@ const OfferRedemption = () => {
              
               <div className="flex flex-col items-center mt-6">
                {!isLoggedIn ? (
-                 <div className="w-[200px] h-[200px] bg-gray-100 border border-gray-200 flex flex-col items-center justify-center p-4 mb-6 rounded-2xl">
+                 <div onClick={() => loginWithRedirect()} className="w-[200px] h-[200px] bg-gray-100 border border-gray-200 flex flex-col items-center justify-center p-4 mb-6 rounded-2xl cursor-pointer hover:bg-gray-200 transition-colors">
                     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 mb-2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                     <p className="text-sm font-bold text-gray-500 text-center">Login required to view QR Code</p>
                  </div>
                ) : (
                  <div className="w-[200px] h-[200px] bg-white border border-gray-100 p-2 mb-6">
-                    <img loading="lazy" src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
+                    <img decoding="async" loading="lazy" src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=fudbuddy-offer-${offer.id}`} alt="QR Code" className="w-full h-full object-contain" />
                  </div>
                )}
                
@@ -171,12 +223,12 @@ const OfferRedemption = () => {
                )}
                
                {!isLoggedIn ? (
-                 <button onClick={() => setIsLoggedIn(true)} className="bg-[#8cc63f] text-white text-[15px] font-bold px-12 py-4 rounded-xl shadow-sm hover:bg-[#7ab135] transition-colors w-[300px]">
+                 <button onClick={() => loginWithRedirect()} className="bg-[#8cc63f] text-white text-[15px] font-bold px-12 py-4 rounded-xl shadow-sm hover:bg-[#7ab135] transition-colors w-[300px]">
                    Login to Claim
                  </button>
                ) : (
-                 <button className="bg-[#8cc63f] text-white text-[15px] font-bold px-12 py-4 rounded-xl shadow-sm hover:bg-[#7ab135] transition-colors w-[300px]">
-                   Download / Share
+                 <button onClick={handleDownload} className="bg-[#8cc63f] text-white text-[15px] font-bold px-12 py-4 rounded-xl shadow-sm hover:bg-[#7ab135] transition-colors w-[300px]">
+                   Download QR Code
                  </button>
                )}
               </div>
@@ -185,8 +237,17 @@ const OfferRedemption = () => {
           {/* Right Col: Helpers */}
           <div className="w-[280px] flex-shrink-0 flex flex-col gap-6">
              <div className="bg-[#f9fafb] border border-gray-100 rounded-3xl p-8 flex flex-col items-center flex-1 justify-center">
-               <div className="w-[140px] h-[140px] bg-gray-200 rounded-full mb-8 mt-4 flex items-center justify-center overflow-hidden shadow-inner">
-                 <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+               <div className="w-[140px] h-[140px] bg-white rounded-full mb-8 mt-4 flex items-center justify-center overflow-hidden border-4 border-gray-50 shadow-md">
+                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="text-[#8cc63f]">
+                   <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                   <rect x="8" y="6" width="3" height="3"></rect>
+                   <rect x="13" y="6" width="3" height="3"></rect>
+                   <rect x="8" y="11" width="3" height="3"></rect>
+                   <rect x="13" y="11" width="1" height="1"></rect>
+                   <rect x="15" y="13" width="1" height="1"></rect>
+                   <rect x="13" y="13" width="1" height="1"></rect>
+                   <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"></line>
+                 </svg>
                </div>
                <p className="text-[15px] text-[#3a444a] font-bold text-center leading-relaxed">
                  Show this QR code at the restaurant
@@ -200,8 +261,15 @@ const OfferRedemption = () => {
              </div>
           </div>
 
-        </div>
+         </div>
       </div>
+
+      {/* Modals */}
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+        onSuccess={handleAuthSuccess} 
+      />
     </div>
   );
 };

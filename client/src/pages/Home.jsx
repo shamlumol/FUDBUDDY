@@ -30,14 +30,12 @@ const Home = () => {
           </div>
 
           {/* Right: Popular Restaurants */}
-          <div className="w-full md:w-[35%]">
+          <div id="restaurants" className="w-full md:w-[35%] scroll-mt-24">
             <RestaurantSection />
           </div>
         </div>
 
-        {/* FEATURED OFFERS */}
-        <OfferSection />
-        
+
         {/* ADDITIONAL DISCOVERY SECTION - Explore by Food */}
         <section className="mb-10 md:mb-12">
             <div className="bg-green-50 rounded-3xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -51,7 +49,7 @@ const Home = () => {
               </div>
               
               <div className="w-full md:w-[320px] aspect-[4/3] rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=600" alt="Chef Partner" className="w-full h-full object-cover" />
+                <img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=600" alt="Chef Partner" className="w-full h-full object-cover" />
               </div>
             </div>
           </section>

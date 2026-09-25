@@ -1,4 +1,5 @@
 ﻿import React from 'react';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import { ArrowLeft, MapPin, Ticket, AlertCircle } from 'lucide-react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
@@ -11,6 +12,7 @@ const DiningPass = () => {
   if (!restaurant || !bookingDetails) {
     return (
       <div className="p-10 text-center">
+      <Breadcrumbs items={[{ label: 'Dining Pass' }]} />
         <p>Invalid pass.</p>
         <button onClick={() => navigate('/')} className="text-primary mt-4">Go Home</button>
       </div>
@@ -54,7 +56,7 @@ const DiningPass = () => {
             Show this QR code at the restaurant
           </p>
           <div className="w-48 h-48 bg-white border-4 border-primary rounded-2xl p-2 mb-4 shadow-sm">
-            <img loading="lazy" src={mockQrUrl} alt="QR Code" className="w-full h-full" />
+            <img decoding="async" loading="lazy" src={mockQrUrl} alt="QR Code" className="w-full h-full" />
           </div>
           <p className="text-[10px] text-gray-400">Scan to validate booking and offer</p>
         </div>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import { getRestaurants, getCollections } from '../services/api';
 import { Link } from 'react-router-dom';
 import RestaurantCard from '../components/RestaurantCard';
@@ -38,6 +39,7 @@ const Dining = () => {
 
   return (
     <div className="w-full bg-background min-h-screen pb-24 md:pb-10 font-sans">
+      <Breadcrumbs items={[{ label: 'Dining Pass' }]} />
       <div className="md:hidden">
         <Header />
       </div>
@@ -63,7 +65,7 @@ const Dining = () => {
           <div className="flex space-x-4 overflow-x-auto scrollbar-hide pb-2 md:grid md:grid-cols-4 md:space-x-0 md:gap-4">
             {collections.map(col => (
               <div key={col.id} className="relative w-40 h-48 md:w-full md:h-64 rounded-2xl overflow-hidden flex-shrink-0 cursor-pointer group shadow-sm">
-                <img loading="lazy" src={col.image} alt={col.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img decoding="async" loading="lazy" src={col.image} alt={col.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 text-white">
                   <p className="text-sm md:text-lg font-bold leading-tight">{col.title}</p>

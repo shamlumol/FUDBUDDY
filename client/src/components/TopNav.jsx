@@ -9,7 +9,7 @@ const TopNav = () => {
       {/* Logo */}
       <div className="flex-shrink-0 mr-8">
         <Link to="/" className="flex items-center">
-          <img loading="lazy" src="/logo.png" alt="Fudbuddy Logo" className="h-8 object-contain" />
+          <img decoding="async" loading="lazy" src="/logo.png" alt="Fudbuddy Logo" className="h-8 object-contain" />
         </Link>
       </div>
 
@@ -37,7 +37,7 @@ const TopNav = () => {
         </Link>
 
         <Link to="/profile" className="w-9 h-9 rounded-full bg-gray-200 overflow-hidden border border-gray-200">
-          <img loading="lazy" src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
+          <img decoding="async" loading="lazy" src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
         </Link>
       </div>
     </div>

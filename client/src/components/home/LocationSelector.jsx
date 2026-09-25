@@ -26,7 +26,7 @@ const locations = [
 
 const LocationSelector = ({ className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState(locations[0]);
+  const [selectedLocation, setSelectedLocation] = useState("Dammam");
   const dropdownRef = useRef(null);
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 ﻿import React, { useState } from 'react';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import { ArrowLeft, Calendar, Users, Clock, Tag } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { restaurants, offersData } from '../data/mockData';
@@ -35,6 +36,7 @@ const BookTable = () => {
 
   return (
     <div className="w-full bg-background min-h-screen pb-24 font-sans max-w-2xl mx-auto md:pt-10 md:px-5">
+      <Breadcrumbs items={[{ label: 'Book a Table' }]} />
       
       {/* Header */}
       <header className="flex items-center px-5 pt-6 pb-4 bg-white sticky top-0 z-20 shadow-sm md:rounded-t-2xl border-b border-gray-100">

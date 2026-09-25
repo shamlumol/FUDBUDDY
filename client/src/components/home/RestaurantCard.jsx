@@ -13,7 +13,7 @@ const RestaurantCard = ({ restaurant, layout = 'vertical', showHeart = false, sh
       >
         <div className="w-16 h-16 bg-gray-50 rounded-[20px] overflow-hidden flex-shrink-0 border border-gray-100 flex items-center justify-center">
           {(restaurant.logo || restaurant.image) ? (
-            <img 
+            <img decoding="async" 
               src={restaurant.logo || restaurant.image} 
               alt={restaurant.name} 
               className="w-full h-full object-cover" 
@@ -71,7 +71,7 @@ const RestaurantCard = ({ restaurant, layout = 'vertical', showHeart = false, sh
     >
       <div className="w-full h-36 bg-gray-50 rounded-xl overflow-hidden relative mb-3 flex items-center justify-center">
         {restaurant.image ? (
-          <img 
+          <img decoding="async" 
             src={restaurant.image} 
             alt={restaurant.name} 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 

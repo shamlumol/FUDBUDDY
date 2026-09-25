@@ -1,3 +1,4 @@
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import React, { useState, useEffect } from 'react';
 import { Heart, Share2, Star, MapPin, Phone, Mail, Globe, Navigation, ArrowLeft } from 'lucide-react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
@@ -8,7 +9,7 @@ const TrendingDishCard = ({ item }) => (
   <div className="group cursor-pointer flex flex-col h-full">
     <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden mb-3 relative bg-gray-50">
       {item.image ? (
-        <img loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+        <img decoding="async" loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
       ) : (
         <div className="w-full h-full bg-gray-100 flex items-center justify-center">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-gray-300"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -33,6 +34,7 @@ const Pagination = ({ total, itemsPerPage, currentPage, onPageChange }) => {
   if (totalPages <= 1) return null;
   return (
     <div className="flex justify-center items-center gap-4 mt-6 w-full col-span-full">
+      <Breadcrumbs items={[{ label: 'Restaurant' }]} />
       <button onClick={() => onPageChange(Math.max(1, currentPage - 1))} disabled={currentPage === 1} className="w-8 h-8 flex items-center justify-center rounded-full border border-gray-200 disabled:opacity-50">&lt;</button>
       <div className="flex gap-2">
         {Array.from({length: totalPages}, (_, i) => i + 1).map(p => (
@@ -48,14 +50,42 @@ const RestaurantDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [isFavorite, setIsFavorite] = useState(false);
-  const handleShare = () => toast("Link copied to clipboard!");
-  
   const [restaurant, setRestaurant] = useState(null);
+
+  useEffect(() => {
+    if (restaurant) {
+      const saved = JSON.parse(localStorage.getItem('savedRestaurants') || '[]');
+      setIsFavorite(saved.some(r => r.id === restaurant.id));
+    }
+  }, [restaurant]);
+
+  const toggleSave = () => {
+    if (!restaurant) return;
+    let saved = JSON.parse(localStorage.getItem('savedRestaurants') || '[]');
+    if (isFavorite) {
+      saved = saved.filter(r => r.id !== restaurant.id);
+    } else {
+      saved.push(restaurant);
+    }
+    localStorage.setItem('savedRestaurants', JSON.stringify(saved));
+    setIsFavorite(!isFavorite);
+    window.dispatchEvent(new Event('storage'));
+    toast(isFavorite ? "Removed from Wishlist" : "Added to Wishlist");
+  };
+  const handleShare = () => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href);
+    }
+    toast("Link copied to clipboard!");
+  };
+  
+  
   const [trendingItems, setTrendingItems] = useState([]);
   const [trendingPage, setTrendingPage] = useState(1);
   const [budgetPage, setBudgetPage] = useState(1);
   const itemsPerPage = 8;
   const [budgetItems, setBudgetItems] = useState([]);
+  const [fullMenu, setFullMenu] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -66,6 +96,7 @@ const RestaurantDetail = () => {
           getRestaurantMenu(id)
         ]);
         setRestaurant(restRes);
+        setFullMenu(menuRes || []);
         setTrendingItems((menuRes || []).filter(item => item.isTrending));
         setBudgetItems((menuRes || []).filter(item => item.isBudget));
         if (!menuRes?.some(item => item.isTrending)) {
@@ -88,7 +119,8 @@ const RestaurantDetail = () => {
     return <div className="p-8 text-center text-red-500 font-bold">Failed to load restaurant.</div>;
   }
 
-  const displayItems = trendingItems;
+  let displayItems = trendingItems;
+  let filteredBudgetItems = budgetItems;
 
   return (
     <div className="w-full bg-white min-h-screen pb-24 md:pb-10 font-sans">
@@ -104,7 +136,7 @@ const RestaurantDetail = () => {
             <ArrowLeft size={20} strokeWidth={2.5} />
           </button>
           <div className="flex items-center gap-3">
-            <button onClick={() => setIsFavorite(!isFavorite)} className="w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md rounded-full text-white hover:text-[#8cc63f] transition-colors">
+            <button onClick={toggleSave} className="w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md rounded-full text-white hover:text-[#8cc63f] transition-colors">
               <Heart size={20} className={isFavorite ? "fill-[#8cc63f] text-[#8cc63f]" : ""} />
             </button>
             <button onClick={handleShare} className="w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md rounded-full text-white">
@@ -115,13 +147,13 @@ const RestaurantDetail = () => {
 
         {/* Hero Image with Fade */}
         <div className="w-full h-[320px] relative mb-12">
-          <img loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
+          <img decoding="async" loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
           
           {/* Floating Logo */}
           <div className="absolute -bottom-8 left-6 w-[100px] h-[100px] bg-white/70 backdrop-blur-md rounded-3xl p-1 shadow-lg shadow-black/5 border border-white">
             <div className="w-full h-full rounded-2xl overflow-hidden bg-white flex items-center justify-center">
-              <img loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
+              <img decoding="async" loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
             </div>
           </div>
         </div>
@@ -191,6 +223,8 @@ const RestaurantDetail = () => {
             )}
           </div>
 
+
+
           <div>
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-[19px] font-extrabold text-[#112431] tracking-tight">Trending Dishes</h3>
@@ -206,17 +240,17 @@ const RestaurantDetail = () => {
             </div>
           </div>
 
-          {budgetItems.length > 0 && (
+          {filteredBudgetItems.length > 0 && (
             <div className="mt-8">
               <div className="flex justify-between items-center mb-6">
                 <h3 className="text-[19px] font-extrabold text-[#112431] tracking-tight">Budget Friendly</h3>
               </div>
               
               <div className="grid grid-cols-2 gap-x-4 gap-y-6 pb-4">
-                {budgetItems.slice((budgetPage - 1) * itemsPerPage, budgetPage * itemsPerPage).map((item, idx) => (
+                {filteredBudgetItems.slice((budgetPage - 1) * itemsPerPage, budgetPage * itemsPerPage).map((item, idx) => (
                   <TrendingDishCard key={idx} item={item} />
                 ))}
-                <Pagination total={budgetItems.length} itemsPerPage={itemsPerPage} currentPage={budgetPage} onPageChange={setBudgetPage} />
+                <Pagination total={filteredBudgetItems.length} itemsPerPage={itemsPerPage} currentPage={budgetPage} onPageChange={setBudgetPage} />
               </div>
             </div>
           )}
@@ -231,14 +265,14 @@ const RestaurantDetail = () => {
         
         {/* Desktop Header Image */}
         <div className="w-full h-[320px] relative mb-10">
-           <img loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
+           <img decoding="async" loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
            
            <div className="absolute top-8 right-12 flex space-x-4">
              <button className="bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full font-bold text-xs shadow-lg flex items-center text-[#112431] hover:bg-white transition-colors">
                OFFERS
              </button>
-             <button onClick={() => setIsFavorite(!isFavorite)} className="bg-white/90 backdrop-blur-md w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-[#112431] hover:text-[#8cc63f] transition-colors">
+             <button onClick={toggleSave} className="bg-white/90 backdrop-blur-md w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-[#112431] hover:text-[#8cc63f] transition-colors">
                <Heart size={20} className={isFavorite ? "fill-[#8cc63f] text-[#8cc63f]" : ""} />
              </button>
              <button onClick={handleShare} className="bg-white/90 backdrop-blur-md w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-[#112431] hover:text-gray-600 transition-colors">
@@ -255,7 +289,7 @@ const RestaurantDetail = () => {
             <div className="flex items-end mb-10 -mt-36 relative z-10">
               <div className="w-36 h-36 bg-white/70 backdrop-blur-md rounded-[2.5rem] p-1.5 shadow-xl shadow-black/5 border border-white mr-8">
                 <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white flex items-center justify-center">
-                  <img loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
+                  <img decoding="async" loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
                 </div>
               </div>
               <div className="pb-4">
@@ -299,6 +333,8 @@ const RestaurantDetail = () => {
               )}
             </div>
 
+
+
             <div className="mb-14">
               <div className="flex items-center mb-8">
                 <h3 className="text-xl font-extrabold text-[#112431] mr-4 tracking-tight">Trending Dishes</h3>
@@ -312,16 +348,16 @@ const RestaurantDetail = () => {
               </div>
             </div>
 
-            {budgetItems.length > 0 && (
+            {filteredBudgetItems.length > 0 && (
               <div>
                 <div className="flex items-center mb-8">
                   <h3 className="text-xl font-extrabold text-[#112431] mr-4 tracking-tight">Budget Friendly</h3>
                 </div>
                 <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
-                  {budgetItems.slice((budgetPage - 1) * itemsPerPage, budgetPage * itemsPerPage).map((item, idx) => (
+                  {filteredBudgetItems.slice((budgetPage - 1) * itemsPerPage, budgetPage * itemsPerPage).map((item, idx) => (
                   <TrendingDishCard key={idx} item={item} />
                 ))}
-                <Pagination total={budgetItems.length} itemsPerPage={itemsPerPage} currentPage={budgetPage} onPageChange={setBudgetPage} />
+                <Pagination total={filteredBudgetItems.length} itemsPerPage={itemsPerPage} currentPage={budgetPage} onPageChange={setBudgetPage} />
                 </div>
               </div>
             )}
@@ -365,7 +401,7 @@ const RestaurantDetail = () => {
                  <div className="absolute inset-0 opacity-[0.05]" style={{backgroundImage: 'radial-gradient(circle at center, #000 1px, transparent 1px)', backgroundSize: '10px 10px'}}></div>
                  <div className="absolute inset-0 flex flex-col items-center justify-center">
                     <div className="w-14 h-14 bg-white rounded-full p-1 shadow-md mb-2 border-2 border-[#8cc63f] group-hover:scale-110 transition-transform relative z-10">
-                      <img loading="lazy" src={restaurant.logo} alt="map pin" className="w-full h-full rounded-full object-cover" />
+                      <img decoding="async" loading="lazy" src={restaurant.logo} alt="map pin" className="w-full h-full rounded-full object-cover" />
                       <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-[#8cc63f]"></div>
                     </div>
                     <span className="text-gray-500 font-bold text-[11px] group-hover:text-[#8cc63f] transition-colors">View on Map</span>

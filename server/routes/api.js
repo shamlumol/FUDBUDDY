@@ -7,10 +7,30 @@ router.get('/collections', (req, res) => {
   res.json(db.collections);
 });
 
+const { z } = require('zod');
+
+// Validation schema for restaurant search
+const restaurantQuerySchema = z.object({
+  search: z.string().max(100).optional(),
+  category: z.string().max(50).optional(),
+  type: z.string().max(50).optional(),
+  price: z.string().max(5).optional(),
+  distance: z.string().max(10).optional(),
+  rating: z.string().max(5).optional(),
+  page: z.string().optional(),
+  limit: z.string().optional()
+});
+
 // GET /api/restaurants
 router.get('/restaurants', (req, res) => {
+  // Validate request
+  const parseResult = restaurantQuerySchema.safeParse(req.query);
+  if (!parseResult.success) {
+    return res.status(400).json({ error: 'Invalid query parameters' });
+  }
+
   let results = [...db.restaurants];
-  const { search, category, type, price, distance, rating, page = 1, limit = 10 } = req.query;
+  const { search, category, type, price, distance, rating, page = 1, limit = 10 } = parseResult.data;
 
   // Search by name, cuisine, location
   if (search) {
@@ -57,6 +77,22 @@ router.get('/restaurants', (req, res) => {
   if (rating) {
     const minRating = parseFloat(rating);
     results = results.filter(r => r.rating >= minRating);
+  }
+
+  // Priority sorting: boost specific restaurants for specific queries
+  if (search) {
+    const q = search.toLowerCase();
+    // Arabic restaurants: MT and Al Romansiah should appear first
+    if (q.includes('arabic') || q.includes('mandi') || q.includes('madghout') || q.includes('romansiah')) {
+      const priorityNames = ['mt restaurant', 'al romansiah', 'madghout touhama'];
+      results.sort((a, b) => {
+        const aIsPriority = priorityNames.some(n => a.name.toLowerCase().includes(n));
+        const bIsPriority = priorityNames.some(n => b.name.toLowerCase().includes(n));
+        if (aIsPriority && !bIsPriority) return -1;
+        if (!aIsPriority && bIsPriority) return 1;
+        return 0;
+      });
+    }
   }
 
   // Pagination

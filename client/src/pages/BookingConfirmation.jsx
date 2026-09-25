@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect } from 'react';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import { CheckCircle2, Clock, Calendar, Users } from 'lucide-react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ const BookingConfirmation = () => {
   if (!restaurant || !bookingDetails) {
     return (
       <div className="p-10 text-center">
+      <Breadcrumbs items={[{ label: 'Booking Confirmation' }]} />
         <p>Invalid booking session.</p>
         <button onClick={() => navigate('/')} className="text-primary mt-4">Go Home</button>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Search as SearchIcon, Heart } from 'lucide-react';
+import {  ArrowLeft, Search as SearchIcon, Heart , ChevronRight } from 'lucide-react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { getRestaurantById, getRestaurantMenu } from '../services/api';
 import { toast } from '../components/ui/Toast';
@@ -13,14 +13,17 @@ const Menu = () => {
   const [loading, setLoading] = useState(true);
 
   const [savedFoodIds, setSavedFoodIds] = useState(() => {
-    const saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const saved = JSON.parse(localStorage.getItem(`fudbuddy_savedFoods_${userEmail}`) || '[]');
     return saved.map(f => f.id);
   });
 
   const handleToggleWishlist = (e, food) => {
     e.preventDefault();
     e.stopPropagation();
-    let saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const storageKey = `fudbuddy_savedFoods_${userEmail}`;
+    let saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
     const isSaved = saved.some(f => f.id === food.id);
     
     if (isSaved) {
@@ -32,7 +35,7 @@ const Menu = () => {
       setSavedFoodIds(prev => [...prev, food.id]);
       toast('Added to wishlist!');
     }
-    localStorage.setItem('savedFoods', JSON.stringify(saved));
+    localStorage.setItem(storageKey, JSON.stringify(saved));
   };
 
   useEffect(() => {
@@ -54,6 +57,7 @@ const Menu = () => {
   }, [id]);
   
   const [activeCategory, setActiveCategory] = useState('All');
+  const [dietFilter, setDietFilter] = useState('all');
 
   if (loading) {
     return <div className="p-8 text-center text-gray-500">Loading...</div>;
@@ -68,15 +72,18 @@ const Menu = () => {
   const categories = ['All', ...uniqueCats];
   
   // Mobile filtering logic
-  const filteredFoods = activeCategory === 'All' 
+  const filteredByCategory = activeCategory === 'All' 
     ? restaurantFoods 
     : restaurantFoods.filter(f => f.category === activeCategory);
+
+  const filteredFoods = filteredByCategory.filter(f => dietFilter === 'all' ? true : dietFilter === 'veg' ? f.isVeg : !f.isVeg);
 
   // Desktop grouping logic
   const categoriesToRender = activeCategory === 'All' ? uniqueCats : [activeCategory];
 
   return (
     <div className="w-full bg-white min-h-screen pb-24 md:pb-10 font-sans">
+      <Breadcrumbs items={[{ label: 'Restaurants', path: '/' }, { label: 'Menu' }]} />
       
       {/* ========================================================= */}
       {/* MOBILE LAYOUT                                             */}
@@ -93,16 +100,25 @@ const Menu = () => {
           <button className="text-[#112431]"><SearchIcon size={24} /></button>
         </header>
 
-        {/* Top Tabs */}
-        <div className="px-4 py-2 flex gap-2 overflow-x-auto hide-scrollbar sticky top-[68px] z-40 bg-white shadow-[0_4px_6px_-6px_rgba(0,0,0,0.1)]">
-           <button className="bg-[#8cc63f] text-white px-5 py-2 rounded-xl text-[13px] font-bold flex-shrink-0 shadow-sm">Menu</button>
-           <button className="bg-[#f3f4f6] text-[#3a444a] px-5 py-2 rounded-xl text-[13px] font-bold flex-shrink-0">Offers</button>
-           <button className="bg-[#f3f4f6] text-[#3a444a] px-5 py-2 rounded-xl text-[13px] font-bold flex-shrink-0">Reviews</button>
-           <button className="bg-[#f3f4f6] text-[#3a444a] px-5 py-2 rounded-xl text-[13px] font-bold flex-shrink-0">About</button>
+
+
+        {/* Veg/Non-Veg Filter Mobile */}
+        <div className="px-4 py-3">
+          <div className="flex items-center gap-3 bg-gray-50 p-1 rounded-xl">
+             <button onClick={() => setDietFilter('all')} className={`flex-1 py-1.5 text-[13px] font-bold rounded-lg transition-colors ${dietFilter === 'all' ? 'bg-white shadow-sm text-gray-900' : 'text-gray-500'}`}>All</button>
+             <button onClick={() => setDietFilter('veg')} className={`flex-1 py-1.5 text-[13px] font-bold rounded-lg transition-colors flex justify-center items-center gap-1.5 ${dietFilter === 'veg' ? 'bg-white shadow-sm text-green-700' : 'text-gray-500'}`}>
+                <div className="w-2.5 h-2.5 rounded-sm border border-green-600 flex items-center justify-center bg-white"><div className="w-1 h-1 rounded-full bg-green-600"></div></div>
+                Veg
+             </button>
+             <button onClick={() => setDietFilter('nonveg')} className={`flex-1 py-1.5 text-[13px] font-bold rounded-lg transition-colors flex justify-center items-center gap-1.5 ${dietFilter === 'nonveg' ? 'bg-white shadow-sm text-red-700' : 'text-gray-500'}`}>
+                <div className="w-2.5 h-2.5 rounded-sm border border-red-600 flex items-center justify-center bg-white"><div className="w-1 h-1 rounded-full bg-red-600"></div></div>
+                Non-Veg
+             </button>
+          </div>
         </div>
 
         {/* 2-Column Split Pane */}
-        <div className="flex flex-1 overflow-hidden h-[calc(100vh-140px)]">
+        <div className="flex flex-1 overflow-hidden h-[calc(100vh-190px)]">
           {/* Left Sidebar - Categories */}
           <div className="w-[100px] flex-shrink-0 bg-[#f9fafb] overflow-y-auto hide-scrollbar border-r border-gray-100 pb-20">
             {categories.map((cat, idx) => {
@@ -127,7 +143,7 @@ const Menu = () => {
                <Link to={`/food/${item.id}`} key={idx} className="flex py-4 border-b border-gray-50 items-start cursor-pointer hover:bg-gray-50 transition-colors">
                  {/* Image */}
                  <div className="w-[85px] h-[85px] bg-gray-200 rounded-xl mr-3 flex-shrink-0 shadow-sm relative overflow-hidden flex items-center justify-center">
-                   {item.image ? <img loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
+                   {item.image ? <img decoding="async" loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 opacity-50"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>}
                  </div>
                  
@@ -171,34 +187,45 @@ const Menu = () => {
           <h1 className="text-[24px] font-extrabold text-[#112431]">{restaurant.name}</h1>
         </div>
 
-        {/* Main Tabs */}
-        <div className="flex space-x-3 mb-6">
-          <button className="bg-[#8cc63f] text-white px-8 py-2.5 rounded-xl text-[14px] font-bold shadow-md">Menu</button>
-          <button className="bg-[#f3f4f6] text-[#3a444a] px-8 py-2.5 rounded-xl text-[14px] font-bold hover:bg-gray-200 transition-colors">Offers</button>
-          <button className="bg-[#f3f4f6] text-[#3a444a] px-8 py-2.5 rounded-xl text-[14px] font-bold hover:bg-gray-200 transition-colors">Reviews</button>
-          <button className="bg-[#f3f4f6] text-[#3a444a] px-8 py-2.5 rounded-xl text-[14px] font-bold hover:bg-gray-200 transition-colors">About</button>
-        </div>
 
-        {/* Sub Category Pills */}
-        <div className="flex space-x-2.5 mb-10 pb-6 border-b border-gray-100 flex-wrap gap-y-3">
-           {categories.map((cat, idx) => (
-             <button 
-               key={idx}
-               onClick={() => setActiveCategory(cat)}
-               className={`px-5 py-2 rounded-full text-[13px] font-bold transition-colors ${
-                 activeCategory === cat ? 'bg-[#8cc63f] text-white shadow-sm' : 'bg-[#f3f4f6] text-[#3a444a] hover:bg-gray-200'
-               }`}
-             >
-               {cat}
-             </button>
-           ))}
+
+        {/* Sub Category Pills and Filter */}
+        <div className="flex justify-between items-end mb-10 pb-6 border-b border-gray-100 flex-wrap gap-y-4">
+           <div className="flex space-x-2.5 flex-wrap gap-y-3">
+             {categories.map((cat, idx) => (
+               <button 
+                 key={idx}
+                 onClick={() => setActiveCategory(cat)}
+                 className={`px-5 py-2 rounded-full text-[13px] font-bold transition-colors ${
+                   activeCategory === cat ? 'bg-[#8cc63f] text-white shadow-sm' : 'bg-[#f3f4f6] text-[#3a444a] hover:bg-gray-200'
+                 }`}
+               >
+                 {cat}
+               </button>
+             ))}
+           </div>
+           
+           {/* Veg/Non-Veg Filter Desktop */}
+           <div className="flex items-center gap-3 bg-gray-50 p-1 rounded-xl w-[280px]">
+              <button onClick={() => setDietFilter('all')} className={`flex-1 py-1.5 text-[13px] font-bold rounded-lg transition-colors ${dietFilter === 'all' ? 'bg-white shadow-sm text-gray-900' : 'text-gray-500'}`}>All</button>
+              <button onClick={() => setDietFilter('veg')} className={`flex-1 py-1.5 text-[13px] font-bold rounded-lg transition-colors flex justify-center items-center gap-1.5 ${dietFilter === 'veg' ? 'bg-white shadow-sm text-green-700' : 'text-gray-500'}`}>
+                 <div className="w-2.5 h-2.5 rounded-sm border border-green-600 flex items-center justify-center bg-white"><div className="w-1 h-1 rounded-full bg-green-600"></div></div>
+                 Veg
+              </button>
+              <button onClick={() => setDietFilter('nonveg')} className={`flex-1 py-1.5 text-[13px] font-bold rounded-lg transition-colors flex justify-center items-center gap-1.5 ${dietFilter === 'nonveg' ? 'bg-white shadow-sm text-red-700' : 'text-gray-500'}`}>
+                 <div className="w-2.5 h-2.5 rounded-sm border border-red-600 flex items-center justify-center bg-white"><div className="w-1 h-1 rounded-full bg-red-600"></div></div>
+                 Non-Veg
+              </button>
+           </div>
         </div>
 
         {/* Layout */}
         <div className="flex flex-col gap-10">
           
           {categoriesToRender.map((cat, idx) => {
-            const items = restaurantFoods.filter(f => f.category === cat);
+            const items = restaurantFoods
+              .filter(f => f.category === cat)
+              .filter(f => dietFilter === 'all' ? true : dietFilter === 'veg' ? f.isVeg : !f.isVeg);
             if (items.length === 0) return null;
             return (
               <div key={idx}>
@@ -207,7 +234,7 @@ const Menu = () => {
                    {items.map((item, itemIdx, arr) => (
                      <Link to={`/food/${item.id}`} key={itemIdx} className={`flex py-5 px-6 items-center hover:bg-gray-50 transition-colors cursor-pointer ${itemIdx !== arr.length - 1 ? 'border-b border-gray-50' : ''}`}>
                        <div className="w-[120px] h-[80px] bg-gray-200 rounded-xl mr-5 flex-shrink-0 overflow-hidden shadow-sm flex items-center justify-center">
-                         {item.image ? <img loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
+                         {item.image ? <img decoding="async" loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover" /> : 
                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-gray-400 opacity-50"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>}
                        </div>
                        <div className="flex-1 pr-6 flex flex-col h-[80px] justify-between py-0.5">

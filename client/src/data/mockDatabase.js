@@ -42,7 +42,7 @@ const restaurants = [
     contact: '+966 54 103 5900',
     email: 'info@casarestaurant.com',
     website: 'https://www.casarestaurant.co/',
-    mapLink: 'https://www.google.com/maps/place/Casa+Restaurant/@26.4534423,50.0621168,17z',
+    mapLink: 'https://maps.app.goo.gl/7ha6CWsDeWy2bcuSA',
     about: 'Experience the true taste of multi-cuisine dining with our carefully crafted menu.',
     image: '/images/logos/casa_logo.png'
   },
@@ -65,12 +65,12 @@ const restaurants = [
     images: [
       'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&q=80&w=800'
     ],
-    cuisines: 'Indian, South Indian, Biriyani, Kids special, Breakfast, Desserts, Milkshakes and Juices',
+    cuisines: 'Indian, South Indian, Biriyani, Arabic, Breakfast, Desserts, Milkshakes and Juices',
     tags: [
       'Indian',
       'South Indian',
       'Biriyani',
-      'Kids special',
+      'Arabic',
       'Breakfast',
       'Desserts',
       'Milkshakes and Juices',
@@ -113,9 +113,9 @@ const restaurants = [
     images: [
       'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=800'
     ],
-    cuisines: 'Indian, South Indian, North Indian Food, Seafood, Tandoori, Chinese, Biriyani, Kids special, Breakfast, Desserts, Milkshakes and Juices, Soup',
+    cuisines: 'Indian, South Indian, North Indian Food, Seafood, Tandoori, Chinese, Biriyani, Arabic, Breakfast, Desserts, Milkshakes and Juices, Soup',
     tags: [
-      'Indian', 'South Indian', 'North Indian Food', 'Seafood', 'Tandoori', 'Chinese', 'Biriyani', 'Kids special', 'Breakfast', 'Desserts', 'Milkshakes and Juices', 'Soup',
+      'Indian', 'South Indian', 'North Indian Food', 'Seafood', 'Tandoori', 'Chinese', 'Biriyani', 'Arabic', 'Breakfast', 'Desserts', 'Milkshakes and Juices', 'Soup',
       'Best Biriyani spot in Dammam',
       'Best Restaurant in Dammam',
       'Best Beef dry fry (BDF) in Dammam',
@@ -238,7 +238,7 @@ const foods = [
     price: 'SR 32.00',
     priceValue: 32,
     rating: 4.5,
-    image: '/images/golden_prawn.jpg',
+    image: '/images/golden_prawn.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -253,7 +253,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/dragon_chicken.jpg',
+    image: '/images/dragon_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -268,7 +268,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '/images/chicken_65_with_bone.jpg',
+    image: '/images/chicken_65_with_bone.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -283,7 +283,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_65_boneless.jpg',
+    image: '/images/chicken_65_boneless.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -298,7 +298,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.5,
-    image: '/images/chicken_lollipop.jpg',
+    image: '/images/chicken_lollipop.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -313,7 +313,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/sweet_sour_chicken.jpg',
+    image: '/images/sweet_sour_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -328,7 +328,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_wings.jpg',
+    image: '/images/chicken_wings.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -343,7 +343,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.5,
-    image: '/images/chicken_spring_rolls.jpg',
+    image: '/images/chicken_spring_rolls.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -358,7 +358,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '/images/casa_honey_chicken.jpg',
+    image: '/images/casa_honey_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -373,7 +373,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_nuggets.png',
+    image: '/images/chicken_nuggets.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -388,7 +388,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_strips.jpg',
+    image: '/images/chicken_strips.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -403,7 +403,7 @@ const foods = [
     price: 'SR 10.00',
     priceValue: 10,
     rating: 4.5,
-    image: '/images/sweet_popcorn.jpg',
+    image: '/images/sweet_popcorn.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -418,7 +418,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.5,
-    image: '/images/french_fries.jpg',
+    image: '/images/french_fries.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -433,7 +433,7 @@ const foods = [
     price: 'SR 14.00',
     priceValue: 14,
     rating: 4.5,
-    image: '/images/hot_and_sour_soup.jpg',
+    image: '/images/hot_and_sour_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -448,7 +448,7 @@ const foods = [
     price: 'SR 14.00',
     priceValue: 14,
     rating: 4.5,
-    image: '/images/sweet_corn_soup.jpg',
+    image: '/images/sweet_corn_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -463,7 +463,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '/images/seafood_soup.jpg',
+    image: '/images/seafood_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -478,7 +478,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.5,
-    image: '/images/chicken_clear_soup.jpg',
+    image: '/images/chicken_clear_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -493,7 +493,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.5,
-    image: '/images/chicken_cream_soup.jpg',
+    image: '/images/chicken_cream_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -508,7 +508,7 @@ const foods = [
     price: 'SR 10.00',
     priceValue: 10,
     rating: 4.5,
-    image: '/images/veg_clear_soup.jpg',
+    image: '/images/veg_clear_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -523,7 +523,7 @@ const foods = [
     price: 'SR 10.00',
     priceValue: 10,
     rating: 4.5,
-    image: '/images/veg_lemon_coriander_soup.jpg',
+    image: '/images/veg_lemon_coriander_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -538,7 +538,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.5,
-    image: '/images/manchow_soup.jpg',
+    image: '/images/manchow_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -553,7 +553,7 @@ const foods = [
     price: 'SR 15.00',
     priceValue: 15,
     rating: 4.5,
-    image: '/images/lentil_soup.jpg',
+    image: '/images/lentil_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -568,7 +568,7 @@ const foods = [
     price: 'SR 15.00',
     priceValue: 15,
     rating: 4.5,
-    image: '/images/cream_of_mushroom_soup.jpg',
+    image: '/images/cream_of_mushroom_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -583,7 +583,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.5,
-    image: '/images/cream_of_broccoli_soup.jpg',
+    image: '/images/cream_of_broccoli_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -598,7 +598,7 @@ const foods = [
     price: 'SR 15.00',
     priceValue: 15,
     rating: 4.5,
-    image: '/images/green_salad.jpg',
+    image: '/images/green_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -613,7 +613,7 @@ const foods = [
     price: 'SR 10.00',
     priceValue: 10,
     rating: 4.5,
-    image: '/images/cucumber_yoghurt_salad.jpg',
+    image: '/images/cucumber_yoghurt_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -628,7 +628,7 @@ const foods = [
     price: 'SR 15.00',
     priceValue: 15,
     rating: 4.5,
-    image: '/images/fattoush_salad.jpg',
+    image: '/images/fattoush_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -643,7 +643,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.5,
-    image: '/images/russian_salad.jpg',
+    image: '/images/russian_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -658,7 +658,7 @@ const foods = [
     price: 'SR 26.00',
     priceValue: 26,
     rating: 4.5,
-    image: '/images/chicken_tikka_masala.jpg',
+    image: '/images/chicken_masala.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -673,7 +673,7 @@ const foods = [
     price: 'SR 24.00',
     priceValue: 24,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_masala.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -688,7 +688,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '/images/butter_chicken.jpg',
+    image: '/images/butter_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -703,7 +703,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_kadai.jpg',
+    image: '/images/casa_special_kadai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -718,7 +718,7 @@ const foods = [
     price: 'SR 24.00',
     priceValue: 24,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_mughlai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -733,7 +733,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_do_pyaza.jpg',
+    image: '/images/chicken_do_pyaza.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -748,7 +748,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_jalfrezi.jpg',
+    image: '/images/chicken_jalfrezi.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -763,7 +763,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_kolhapuri.jpg',
+    image: '/images/chicken_kolhapuri.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -778,7 +778,7 @@ const foods = [
     price: 'SR 32.00',
     priceValue: 32,
     rating: 4.5,
-    image: '/images/chicken_navratan_korma.jpg',
+    image: '/images/chicken_navratan_korma.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -793,7 +793,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '',
+    image: '/images/casa_special_kadai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -808,7 +808,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/chicken_hyderabadi_curry.jpg',
+    image: '/images/chicken_hyderabadi_curry.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -823,7 +823,7 @@ const foods = [
     price: 'SR 30.00',
     priceValue: 30,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_lababdar.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -838,7 +838,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_korma.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -853,7 +853,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_malabar.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -868,7 +868,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_salt_pepper.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -883,7 +883,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_kondattam.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -898,7 +898,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_roast.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -943,7 +943,7 @@ const foods = [
     price: 'SR 38.00',
     priceValue: 38,
     rating: 4.5,
-    image: '/images/mutton_kadai.jpg',
+    image: '/images/mutton_kadai.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -973,7 +973,7 @@ const foods = [
     price: 'SR 38.00',
     priceValue: 38,
     rating: 4.5,
-    image: '',
+    image: '/images/mutton_mughlai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1078,7 +1078,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.5,
-    image: '/images/kerala_beef_varattu.jpg',
+    image: '/images/kerala_beef_varattu.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -1138,7 +1138,7 @@ const foods = [
     price: 'SR 23.00',
     priceValue: 23,
     rating: 4.5,
-    image: '/images/beef_palli_curry.jpg',
+    image: '/images/beef_palli_curry.jpeg',
     tags: [],
     isTrending: false,
     isBudget: true
@@ -1543,7 +1543,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.5,
-    image: '/images/arusha_fish_grilled.png',
+    image: '/images/arusha_fish_grilled.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -1558,7 +1558,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.5,
-    image: '/images/arusha_fish_grilled.png',
+    image: '/images/arusha_fish_grilled.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1678,7 +1678,7 @@ const foods = [
     price: 'SR 15.00',
     priceValue: 15,
     rating: 4.5,
-    image: '/images/fish_tawa_fry.jpg',
+    image: '/images/fish_tawa_fry.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -1708,7 +1708,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.5,
-    image: '/images/avoli_pollichathu.jpg',
+    image: '/images/avoli_pollichathu.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -1723,7 +1723,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '/images/chicken_peshwari_biriyani.jpg',
+    image: '/images/chicken_peshwari_biriyani.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -1738,7 +1738,7 @@ const foods = [
     price: 'SR 24.00',
     priceValue: 24,
     rating: 4.5,
-    image: '',
+    image: '/images/mutton_peshwari_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1753,7 +1753,7 @@ const foods = [
     price: 'SR 34.00',
     priceValue: 34,
     rating: 4.5,
-    image: '',
+    image: '/images/prawns_peshwari_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1768,7 +1768,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.5,
-    image: '',
+    image: '/images/fish_peshwari_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1783,7 +1783,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_fry_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1798,7 +1798,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.5,
-    image: '',
+    image: '/images/casa_spcl_chicken_biryani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1813,7 +1813,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.5,
-    image: '/images/mutton_dum_biryani.jpg',
+    image: '/images/mutton_dum_biryani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1828,7 +1828,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.5,
-    image: '/images/beef_biriyani.jpg',
+    image: '/images/beef_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1843,7 +1843,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.5,
-    image: '',
+    image: '/images/fish_biriyani_kingfish.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1933,7 +1933,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_schezwan_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1948,7 +1948,7 @@ const foods = [
     price: 'SR 32.00',
     priceValue: 32,
     rating: 4.5,
-    image: '',
+    image: '/images/casa_schezwan_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1963,7 +1963,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.5,
-    image: '',
+    image: '/images/veg_schezwan_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -1993,7 +1993,7 @@ const foods = [
     price: 'SR 24.00',
     priceValue: 24,
     rating: 4.5,
-    image: '',
+    image: '/images/ginger_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2008,7 +2008,7 @@ const foods = [
     price: 'SR 35.00',
     priceValue: 35,
     rating: 4.5,
-    image: '',
+    image: '/images/prawns_manchurian.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2023,7 +2023,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '',
+    image: '/images/chilli_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2038,7 +2038,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_crispy.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2053,7 +2053,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '',
+    image: '/images/garlic_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2068,7 +2068,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '',
+    image: '/images/schezwan_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2083,7 +2083,7 @@ const foods = [
     price: 'SR 30.00',
     priceValue: 30,
     rating: 4.5,
-    image: '',
+    image: '/images/hong_kong_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2098,7 +2098,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '',
+    image: '/images/chilli_fish.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2113,7 +2113,7 @@ const foods = [
     price: 'SR 26.00',
     priceValue: 26,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_manchurian.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2218,7 +2218,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.5,
-    image: '',
+    image: '/images/veg_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2233,7 +2233,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.5,
-    image: '',
+    image: '/images/chicken_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2248,7 +2248,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '',
+    image: '/images/prawns_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2263,7 +2263,7 @@ const foods = [
     price: 'SR 32.00',
     priceValue: 32,
     rating: 4.5,
-    image: '',
+    image: '/images/casa_special_mixed_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2338,7 +2338,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.5,
-    image: '/images/pothum_kal.jpg',
+    image: '/images/pothum_kal.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -2368,7 +2368,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.5,
-    image: '/images/kunji_kozhi_fry.jpg',
+    image: '/images/kunji_kozhi_fry.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -2383,7 +2383,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.5,
-    image: '/images/paal_kappa_beef.jpg',
+    image: '/images/paal_kappa_beef.jpeg',
     tags: [],
     isTrending: true,
     isBudget: false
@@ -2473,7 +2473,7 @@ const foods = [
     price: 'SR 1.00',
     priceValue: 1,
     rating: 4.5,
-    image: '/images/tandoori_roti.jpg',
+    image: '/images/tandoori_roti.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2503,7 +2503,7 @@ const foods = [
     price: 'SR 2.00',
     priceValue: 2,
     rating: 4.5,
-    image: '/images/butter_naan.jpg',
+    image: '/images/butter_naan.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2564,7 +2564,7 @@ const foods = [
     price: 'SR 20.00 - 33.00',
     priceValue: 20,
     rating: 4.8,
-    image: '/images/dum_chicken_biryani.jpg',
+    image: '/images/dum_chicken_biryani.jpeg',
     tags: []
   },
   {
@@ -2578,7 +2578,7 @@ const foods = [
     price: 'SR 23.00 - 35.00',
     priceValue: 23,
     rating: 4.8,
-    image: '/images/beef_biriyani.jpg',
+    image: '/images/beef_biriyani.jpeg',
     tags: [],
     isTrending: true
   },
@@ -2593,7 +2593,7 @@ const foods = [
     price: 'SR 27.00 - 42.00',
     priceValue: 27,
     rating: 4.8,
-    image: '/images/mutton_dum_biryani.jpg',
+    image: '/images/mutton_dum_biryani.jpeg',
     tags: []
   },
   {
@@ -2607,7 +2607,7 @@ const foods = [
     price: 'SR 34.00',
     priceValue: 34,
     rating: 4.8,
-    image: '/images/leghorn_chicken_biryani.jpg',
+    image: '/images/leghorn_chicken_biryani.jpeg',
     tags: []
   },
   {
@@ -2621,7 +2621,7 @@ const foods = [
     price: 'SR 43.00',
     priceValue: 43,
     rating: 4.8,
-    image: '/images/payyoli_chicken_fry.jpg',
+    image: '/images/payyoli_chicken_fry.jpeg',
     tags: [],
     isTrending: true
   },
@@ -2636,7 +2636,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.8,
-    image: '/images/kaada_porichathu.jpg',
+    image: '/images/kaada_porichathu.jpeg',
     tags: []
   },
   {
@@ -2650,7 +2650,7 @@ const foods = [
     price: 'SR 37.00',
     priceValue: 37,
     rating: 4.8,
-    image: '/images/prawns_fry.jpg',
+    image: '/images/prawns_fry.jpeg',
     tags: []
   },
   {
@@ -2664,7 +2664,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/beef_dry_fry_bdf.jpg',
+    image: '/images/beef_dry_fry_bdf.jpeg',
     tags: []
   },
   {
@@ -2678,7 +2678,7 @@ const foods = [
     price: 'SR 7.00',
     priceValue: 7,
     rating: 4.8,
-    image: '/images/extra_side_dish_pack.jpg',
+    image: '/images/extra_side_dish_pack.jpeg',
     tags: []
   },
   {
@@ -2692,7 +2692,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/peri_peri_chicken_mandi.jpg',
+    image: '/images/peri_peri_chicken_mandi.jpeg',
     tags: []
   },
   {
@@ -2706,7 +2706,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/creamy_chicken_mandi.jpg',
+    image: '/images/creamy_chicken_mandi.jpeg',
     tags: []
   },
   {
@@ -2720,7 +2720,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/spicy_beef_mandi.jpg',
+    image: '/images/spicy_beef_mandi.jpeg',
     tags: []
   },
   {
@@ -2734,7 +2734,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/peri_peri_charcoal_chicken.jpg',
+    image: '/images/peri_peri_charcoal_chicken.jpeg',
     tags: []
   },
   {
@@ -2748,7 +2748,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/peri_peri_grilled_sea_bream.jpg',
+    image: '/images/peri_peri_grilled_sea_bream.jpeg',
     tags: []
   },
   {
@@ -2762,7 +2762,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/premium_kanji.jpg',
+    image: '/images/premium_kanji.jpeg',
     tags: []
   },
   {
@@ -2776,7 +2776,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/malbriz_rice_bowls.jpg',
+    image: '/images/malbriz_rice_bowls.jpeg',
     tags: []
   },
   {
@@ -2790,7 +2790,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/evening_snacks.jpg',
+    image: '/images/evening_snacks.jpeg',
     tags: []
   },
   {
@@ -2804,7 +2804,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.8,
-    image: '/images/kerala_samawar_tea.jpg',
+    image: '/images/kerala_samawar_tea.jpeg',
     tags: []
   },
   {
@@ -2818,7 +2818,7 @@ const foods = [
     price: 'SR 9.00',
     priceValue: 9,
     rating: 4.6,
-    image: '/images/hot_n_sour_chicken_soup.png',
+    image: '/images/hot_n_sour_chicken_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2834,7 +2834,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '/images/hot_n_sour_vegetable_soup.jpg',
+    image: '/images/hot_n_sour_vegetable_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2850,7 +2850,7 @@ const foods = [
     price: 'SR 9.00',
     priceValue: 9,
     rating: 4.6,
-    image: '/images/sweet_corn_chicken_soup2.png',
+    image: '/images/sweet_corn_chicken_soup2.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2866,7 +2866,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '/images/sweet_corn_veg_soup.png',
+    image: '/images/sweet_corn_veg_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2882,7 +2882,7 @@ const foods = [
     price: 'SR 10.00',
     priceValue: 10,
     rating: 4.6,
-    image: '/images/chicken_manchow_soup.jpg',
+    image: '/images/chicken_manchow_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2898,7 +2898,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.6,
-    image: '/images/hot_n_sour_prawn_soup.jpg',
+    image: '/images/hot_n_sour_prawn_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2914,7 +2914,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.6,
-    image: '/images/prawns_manchow_soup.jpg',
+    image: '/images/prawns_manchow_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2930,7 +2930,7 @@ const foods = [
     price: 'SR 17.00',
     priceValue: 17,
     rating: 4.6,
-    image: '/images/prawns_manchow_soup.jpg',
+    image: '/images/prawns_manchow_soup.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2946,7 +2946,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.6,
-    image: '/images/caesar_salad.png',
+    image: '/images/caesar_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2962,7 +2962,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.6,
-    image: '/images/tossed_salad.png',
+    image: '/images/tossed_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2978,7 +2978,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.6,
-    image: '/images/olive_garden_salad.png',
+    image: '/images/olive_garden_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -2994,7 +2994,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.6,
-    image: '/images/lettuce_green_salad.jpg',
+    image: '/images/lettuce_green_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3010,7 +3010,7 @@ const foods = [
     price: 'SR 26.00',
     priceValue: 26,
     rating: 4.6,
-    image: '/images/dragon_chicken.jpg',
+    image: '/images/dragon_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3026,7 +3026,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.6,
-    image: '/images/sizzling_platter.jpg',
+    image: '/images/sizzling_platter.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3042,7 +3042,7 @@ const foods = [
     price: 'SR 38.00',
     priceValue: 38,
     rating: 4.6,
-    image: '/images/prawns_65.jpg',
+    image: '/images/prawns_65.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3058,7 +3058,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.6,
-    image: '/images/chicken_lollipop.jpg',
+    image: '/images/chicken_lollipop.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3074,7 +3074,7 @@ const foods = [
     price: 'SR 32.00',
     priceValue: 32,
     rating: 4.6,
-    image: '/images/murgh_malai_tikka.png',
+    image: '/images/murgh_malai_tikka.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3090,7 +3090,7 @@ const foods = [
     price: 'SR 32.00',
     priceValue: 32,
     rating: 4.6,
-    image: '/images/chicken_tikka.jpg',
+    image: '/images/chicken_tikka.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3106,7 +3106,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '/images/chicken_65_boneless.jpg',
+    image: '/images/chicken_65_boneless.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3122,7 +3122,7 @@ const foods = [
     price: 'SR 24.00',
     priceValue: 24,
     rating: 4.6,
-    image: '',
+    image: '/images/babycorn_manchurian_dry.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3154,7 +3154,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.6,
-    image: '/images/butter_chicken.jpg',
+    image: '/images/butter_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3170,7 +3170,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.6,
-    image: '/images/chicken_kadai.jpg',
+    image: '/images/casa_special_kadai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3186,7 +3186,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '',
+    image: '/images/chicken_masala.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3202,7 +3202,7 @@ const foods = [
     price: 'SR 36.00',
     priceValue: 36,
     rating: 4.6,
-    image: '',
+    image: '/images/chicken_mughlai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3218,7 +3218,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '',
+    image: '/images/tandoori_chicken_masala.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3234,7 +3234,7 @@ const foods = [
     price: 'SR 30.00',
     priceValue: 30,
     rating: 4.6,
-    image: '',
+    image: '/images/mutton_kadai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3250,7 +3250,7 @@ const foods = [
     price: 'SR 38.00',
     priceValue: 38,
     rating: 4.6,
-    image: '',
+    image: '/images/mutton_mughlai.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3266,7 +3266,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.6,
-    image: '',
+    image: '/images/fish_roast_masala.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3282,7 +3282,7 @@ const foods = [
     price: 'SR 26.00',
     priceValue: 26,
     rating: 4.6,
-    image: '',
+    image: '/images/prawn_roast_pepper_fry.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3298,7 +3298,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.6,
-    image: '/images/avoli_pollichathu.jpg',
+    image: '/images/avoli_pollichathu.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3362,7 +3362,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.6,
-    image: '',
+    image: '/images/pepper_chicken_masala.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3378,7 +3378,7 @@ const foods = [
     price: 'SR 26.00',
     priceValue: 26,
     rating: 4.6,
-    image: '',
+    image: '/images/chicken_roast.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3394,7 +3394,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.6,
-    image: '',
+    image: '/images/kerala_chicken_fry.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3442,7 +3442,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.6,
-    image: '/images/kerala_beef_varattu.jpg',
+    image: '/images/kerala_beef_varattu.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3666,7 +3666,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.6,
-    image: '/images/chicken_tikka.jpg',
+    image: '/images/chicken_tikka.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3714,7 +3714,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.6,
-    image: '',
+    image: '/images/noodles_regular.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3730,7 +3730,7 @@ const foods = [
     price: 'SR 17.00',
     priceValue: 17,
     rating: 4.6,
-    image: '',
+    image: '/images/schezwan_fried_rice.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3746,7 +3746,7 @@ const foods = [
     price: 'SR 19.00',
     priceValue: 19,
     rating: 4.6,
-    image: '',
+    image: '/images/schezwan_noodles.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3762,7 +3762,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.6,
-    image: '',
+    image: '/images/chilli_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3778,7 +3778,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.6,
-    image: '',
+    image: '/images/chicken_manchurian.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3794,7 +3794,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.6,
-    image: '',
+    image: '/images/chilli_beef.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3810,7 +3810,7 @@ const foods = [
     price: 'SR 36.00',
     priceValue: 36,
     rating: 4.6,
-    image: '',
+    image: '/images/chilli_prawns.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3826,7 +3826,7 @@ const foods = [
     price: 'SR 36.00',
     priceValue: 36,
     rating: 4.6,
-    image: '',
+    image: '/images/prawns_manchurian.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3842,7 +3842,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '',
+    image: '/images/chilli_fish.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -3858,7 +3858,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '',
+    image: '/images/fish_manchurian.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4146,7 +4146,7 @@ const foods = [
     price: 'SR 15.00',
     priceValue: 15,
     rating: 4.6,
-    image: '',
+    image: '/images/chicken_dum_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4162,7 +4162,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '/images/beef_biriyani.jpg',
+    image: '/images/beef_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4178,7 +4178,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.6,
-    image: '/images/mutton_dum_biryani.jpg',
+    image: '/images/mutton_dum_biryani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4194,7 +4194,7 @@ const foods = [
     price: 'SR 26.00',
     priceValue: 26,
     rating: 4.6,
-    image: '',
+    image: '/images/prawns_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4210,7 +4210,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.6,
-    image: '',
+    image: '/images/fish_biriyani_kingfish.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4226,7 +4226,7 @@ const foods = [
     price: 'SR 14.00',
     priceValue: 14,
     rating: 4.6,
-    image: '',
+    image: '/images/vegetable_biriyani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4274,7 +4274,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '',
+    image: '/images/arabic_chicken_biryani.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4370,7 +4370,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.6,
-    image: '/images/curd_rice.png',
+    image: '/images/curd_rice.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4386,7 +4386,7 @@ const foods = [
     price: 'SR 20.00',
     priceValue: 20,
     rating: 4.6,
-    image: '/images/bread_basket.jpg',
+    image: '/images/bread_basket.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4402,7 +4402,7 @@ const foods = [
     price: 'SR 4.00',
     priceValue: 4,
     rating: 4.6,
-    image: '/images/garlic_naan.jpg',
+    image: '/images/garlic_naan.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4418,7 +4418,7 @@ const foods = [
     price: 'SR 4.00',
     priceValue: 4,
     rating: 4.6,
-    image: '/images/butter_naan.jpg',
+    image: '/images/butter_naan.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4434,7 +4434,7 @@ const foods = [
     price: 'SR 3.00',
     priceValue: 3,
     rating: 4.6,
-    image: '/images/butter_naan.jpg',
+    image: '/images/butter_naan.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4450,7 +4450,7 @@ const foods = [
     price: 'SR 2.00',
     priceValue: 2,
     rating: 4.6,
-    image: '/images/tandoori_roti.jpg',
+    image: '/images/tandoori_roti.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4546,7 +4546,7 @@ const foods = [
     price: 'SR 1.75',
     priceValue: 1.75,
     rating: 4.6,
-    image: '/images/nool_porotta.jpg',
+    image: '/images/nool_porotta.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4562,7 +4562,7 @@ const foods = [
     price: 'SR 1.25',
     priceValue: 1.25,
     rating: 4.6,
-    image: '/images/appam.jpg',
+    image: '/images/appam.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4578,7 +4578,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.6,
-    image: '/images/tender_chicken_bites.jpg',
+    image: '/images/tender_chicken_bites.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4594,7 +4594,7 @@ const foods = [
     price: 'SR 24.00',
     priceValue: 24,
     rating: 4.6,
-    image: '/images/chicken_nuggets.png',
+    image: '/images/chicken_nuggets.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4610,7 +4610,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.6,
-    image: '/images/popcorn_chicken.png',
+    image: '/images/popcorn_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4626,7 +4626,7 @@ const foods = [
     price: 'SR 29.00',
     priceValue: 29,
     rating: 4.6,
-    image: '/images/kids_mini_platter.png',
+    image: '/images/kids_mini_platter.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4642,7 +4642,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.6,
-    image: '/images/butter_noodles_chicken.png',
+    image: '/images/butter_noodles_chicken.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4658,7 +4658,7 @@ const foods = [
     price: 'SR 6.00',
     priceValue: 6,
     rating: 4.6,
-    image: '/images/dosa.jpg',
+    image: '/images/dosa.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4674,7 +4674,7 @@ const foods = [
     price: 'SR 5.00',
     priceValue: 5,
     rating: 4.6,
-    image: '/images/idly_set.jpg',
+    image: '/images/idly_set.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4690,7 +4690,7 @@ const foods = [
     price: 'SR 9.00',
     priceValue: 9,
     rating: 4.6,
-    image: '',
+    image: '/images/puttu_pazham.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4706,7 +4706,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '/images/vada_set.png',
+    image: '/images/vada_set.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4722,7 +4722,7 @@ const foods = [
     price: 'SR 10.00',
     priceValue: 10,
     rating: 4.6,
-    image: '',
+    image: '/images/puttu_chappathi_porotta_combo.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4738,7 +4738,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '/images/poori_baji.jpg',
+    image: '/images/poori_baji.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4754,7 +4754,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '',
+    image: '/images/aval_banana.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4770,7 +4770,7 @@ const foods = [
     price: 'SEASONAL',
     priceValue: 0,
     rating: 4.6,
-    image: '/images/steamed_banana.jpg',
+    image: '/images/steamed_banana.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4786,7 +4786,7 @@ const foods = [
     price: 'SR 6.00',
     priceValue: 6,
     rating: 4.6,
-    image: '/images/rawa_upmave.jpg',
+    image: '/images/rawa_upmave.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4802,7 +4802,7 @@ const foods = [
     price: 'SR 13.00',
     priceValue: 13,
     rating: 4.6,
-    image: '/images/chappathi_porotta_beef_curry.jpg',
+    image: '/images/chappathi_porotta_beef_curry.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4818,7 +4818,7 @@ const foods = [
     price: 'SR 24.00',
     priceValue: 24,
     rating: 4.6,
-    image: '/images/gad_bad.png',
+    image: '/images/gad_bad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4834,7 +4834,7 @@ const foods = [
     price: 'SR 13.00',
     priceValue: 13,
     rating: 4.6,
-    image: '/images/fruit_salad.png',
+    image: '/images/fruit_salad.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4850,7 +4850,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.6,
-    image: '/images/fruit_salad_ice_cream.png',
+    image: '/images/fruit_salad_ice_cream.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4866,7 +4866,7 @@ const foods = [
     price: 'SR 4.00',
     priceValue: 4,
     rating: 4.6,
-    image: '/images/ice_cream.png',
+    image: '/images/ice_cream.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4882,7 +4882,7 @@ const foods = [
     price: 'SR 18.00',
     priceValue: 18,
     rating: 4.6,
-    image: '/images/falloda.png',
+    image: '/images/falloda.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4898,7 +4898,7 @@ const foods = [
     price: 'SR 3.00',
     priceValue: 3,
     rating: 4.6,
-    image: '/images/gulab_jamun.jpg',
+    image: '/images/gulab_jamun.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4914,7 +4914,7 @@ const foods = [
     price: 'SR 9.00',
     priceValue: 9,
     rating: 4.6,
-    image: '/images/gulab_jamun_ice_cream.png',
+    image: '/images/gulab_jamun_ice_cream.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4930,7 +4930,7 @@ const foods = [
     price: 'SR 14.00',
     priceValue: 14,
     rating: 4.6,
-    image: '/images/saudi_champagne.png',
+    image: '/images/saudi_champagne.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4946,7 +4946,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '',
+    image: '/images/orange_juice.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4962,7 +4962,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '',
+    image: '/images/mango_juice.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4978,7 +4978,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '',
+    image: '/images/grape_juice.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -4994,7 +4994,7 @@ const foods = [
     price: 'SR 9.00',
     priceValue: 9,
     rating: 4.6,
-    image: '',
+    image: '/images/apple_juice.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -5010,7 +5010,7 @@ const foods = [
     price: 'SR 14.00',
     priceValue: 14,
     rating: 4.6,
-    image: '',
+    image: '/images/pomegranate_juice.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -5042,7 +5042,7 @@ const foods = [
     price: 'SR 14.00',
     priceValue: 14,
     rating: 4.6,
-    image: '',
+    image: '/images/chocolate_shake.jpeg',
     tags: [],
     isTrending: false,
     isBudget: false
@@ -5233,7 +5233,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.7,
-    image: '',
+    image: '/images/breakfast_combo.jpeg',
     description: 'Redtable signature dish.',
     isVeg: false,
     isTrending: false,
@@ -5265,7 +5265,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/duck_kurumulak.jpg',
+    image: '/images/duck_kurumulak.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: true,
@@ -5281,7 +5281,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/porotta_beef_kizhi.jpg',
+    image: '/images/porotta_beef_kizhi.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: true,
@@ -5297,7 +5297,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/poricha_kozhi.jpg',
+    image: '/images/poricha_kozhi.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: true,
@@ -5313,7 +5313,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/tawa_grilled_fish.jpg',
+    image: '/images/tawa_grilled_fish.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: true,
@@ -5329,7 +5329,7 @@ const foods = [
     price: 'SR 25.00',
     priceValue: 25,
     rating: 4.5,
-    image: '/images/beef_palli_palayam.jpg',
+    image: '/images/beef_palli_palayam.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: true,
@@ -5345,7 +5345,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.5,
-    image: '/images/porotta_chicken_special.jpg',
+    image: '/images/porotta_chicken_special.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: false,
@@ -5361,7 +5361,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.5,
-    image: '/images/idiyappam_duck_special.jpg',
+    image: '/images/idiyappam_duck_special.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: false,
@@ -5377,7 +5377,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.5,
-    image: '/images/thattu_dosa_beef_masala.png',
+    image: '/images/thattu_dosa_beef_masala.jpeg',
     description: 'Redtable Restaurant special dish.',
     isVeg: false,
     isTrending: false,
@@ -5393,7 +5393,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '/images/beef_biriyani.jpg',
+    image: '/images/beef_biriyani.jpeg',
     description: 'Malbriz special dish.',
     isVeg: false,
     isTrending: true,
@@ -5409,7 +5409,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '/images/mutton_dum_biryani.jpg',
+    image: '/images/mutton_dum_biryani.jpeg',
     description: 'Malbriz special dish.',
     isVeg: false,
     isTrending: true,
@@ -5425,7 +5425,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '/images/leghorn_chicken_biryani.jpg',
+    image: '/images/leghorn_chicken_biryani.jpeg',
     description: 'Malbriz special dish.',
     isVeg: false,
     isTrending: true,
@@ -5441,7 +5441,7 @@ const foods = [
     price: 'SR 28.00',
     priceValue: 28,
     rating: 4.5,
-    image: '/images/beef_palli_curry.jpg',
+    image: '/images/beef_palli_curry.jpeg',
     description: 'Malbriz special dish.',
     isVeg: false,
     isTrending: true,
@@ -5457,7 +5457,7 @@ const foods = [
     price: 'SR 22.00',
     priceValue: 22,
     rating: 4.5,
-    image: '/images/chicken_madghout.jpg',
+    image: '/images/chicken_madghout.jpeg',
     description: 'MT Restaurant special dish.',
     isVeg: false,
     isTrending: true,
@@ -5473,7 +5473,7 @@ const foods = [
     price: 'SR 30.00',
     priceValue: 30,
     rating: 4.5,
-    image: '/images/hashi_madghout.jpg',
+    image: '/images/hashi_madghout.jpeg',
     description: 'MT Restaurant special dish.',
     isVeg: false,
     isTrending: true,
@@ -5489,7 +5489,7 @@ const foods = [
     price: 'SR 45.00',
     priceValue: 45,
     rating: 4.5,
-    image: '/images/mandi_meat.jpg',
+    image: '/images/mandi_meat.jpeg',
     description: 'Al Romansiah special dish.',
     isVeg: false,
     isTrending: true,
@@ -5505,7 +5505,7 @@ const foods = [
     price: 'SR 45.00',
     priceValue: 45,
     rating: 4.5,
-    image: '/images/madhbi_chicken.jpg',
+    image: '/images/madhbi_chicken.jpeg',
     description: 'Al Romansiah special dish.',
     isVeg: false,
     isTrending: true,
@@ -5521,7 +5521,7 @@ const foods = [
     price: 'SR 45.00',
     priceValue: 45,
     rating: 4.5,
-    image: '/images/meat_kebab.jpg',
+    image: '/images/meat_kebab.jpeg',
     description: 'Al Romansiah special dish.',
     isVeg: false,
     isTrending: true,
@@ -5537,7 +5537,7 @@ const foods = [
     price: 'SR 45.00',
     priceValue: 45,
     rating: 4.5,
-    image: '/images/mandi_goat.jpg',
+    image: '/images/mandi_goat.jpeg',
     description: 'Al Romansiah special dish.',
     isVeg: false,
     isTrending: true,
@@ -5553,7 +5553,7 @@ const foods = [
     price: 'SR 62.00',
     priceValue: 62,
     rating: 4.8,
-    image: '/images/mandi_chicken_saudi_rice.jpg',
+    image: '/images/mandi_chicken_saudi_rice.jpeg',
     description: 'Traditional chicken cooked slow with authentic Mandi spices, served over seasoned aromatic rice.',
     calories: '2625 Kcal',
     isVeg: false,
@@ -5689,7 +5689,7 @@ const foods = [
     price: 'SR 11.50',
     priceValue: 11.5,
     rating: 4.8,
-    image: '/images/hummus.jpg',
+    image: '/images/hummus.jpeg',
     description: 'Smooth blend of chickpeas, tahini, lemon juice, and premium olive oil.',
     calories: 'N/A',
     isVeg: true,
@@ -5706,7 +5706,7 @@ const foods = [
     price: 'SR 2.50',
     priceValue: 2.5,
     rating: 4.8,
-    image: '',
+    image: '/images/sambosa_mix.jpeg',
     description: 'Crispy fried pastry triangles stuffed with spiced minced meat and savory vegetables.',
     calories: 'Per Piece',
     isVeg: true,
@@ -5723,7 +5723,7 @@ const foods = [
     price: 'SR 16.00',
     priceValue: 16,
     rating: 4.8,
-    image: '/images/pistachio_kunafa.jpg',
+    image: '/images/pistachio_kunafa.jpeg',
     description: 'Crispy shredded pastry dough filled with rich cream, sweetened with syrup, and topped with crushed pistachios.',
     calories: 'N/A',
     isVeg: true,
@@ -5740,7 +5740,7 @@ const foods = [
     price: 'SR 15.00',
     priceValue: 15,
     rating: 4.8,
-    image: '/images/umm_ali_nuts.jpg',
+    image: '/images/umm_ali_nuts.jpeg',
     description: 'Traditional warm bread pudding baked with cream, milk, flaky pastry layers, raisins, and mixed nuts.',
     calories: 'N/A',
     isVeg: true,
@@ -5757,7 +5757,7 @@ const foods = [
     price: 'SR 10.00',
     priceValue: 10,
     rating: 4.8,
-    image: '/images/asfani_juice.png',
+    image: '/images/asfani_juice.jpeg',
     description: 'Signature thick, creamy fruit blend juice with a smooth banana milkshake profile.',
     calories: 'N/A',
     isVeg: true,
@@ -5774,7 +5774,7 @@ const foods = [
     price: 'SR 81.00',
     priceValue: 81,
     rating: 4.6,
-    image: '/images/hashi_for_one_person.jpg',
+    image: '/images/hashi_for_one_person.jpeg',
     description: 'Local camel meat with traditional madghout spices and rice',
     calories: '271 Kcal',
     isVeg: false,
@@ -5791,7 +5791,7 @@ const foods = [
     price: 'SR 30.00',
     priceValue: 30,
     rating: 4.6,
-    image: '/images/half_a_chicken_madghout.jpg',
+    image: '/images/half_a_chicken_madghout.jpeg',
     description: 'Fresh local chicken with specialized Tihama spices and rice',
     calories: '1990 Kcal',
     isVeg: false,
@@ -5808,7 +5808,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.6,
-    image: '/images/moussaka_combo_platter.jpg',
+    image: '/images/moussaka_combo_platter.jpeg',
     description: 'Fresh eggplant slow-cooked with tender minced meat and authentic spices',
     calories: '522 Kcal',
     isVeg: false,
@@ -5825,7 +5825,7 @@ const foods = [
     price: 'SR 8.00',
     priceValue: 8,
     rating: 4.6,
-    image: '/images/cucumber_with_yogurt.jpg',
+    image: '/images/cucumber_with_yogurt.jpeg',
     description: 'MT Restaurant special.',
     calories: '45 Kcal',
     isVeg: true,
@@ -5842,7 +5842,7 @@ const foods = [
     price: 'SR 5.00',
     priceValue: 5,
     rating: 4.6,
-    image: '/images/spicy_salad_daqoos.jpg',
+    image: '/images/spicy_salad_daqoos.jpeg',
     description: 'MT Restaurant special.',
     calories: '25 Kcal',
     isVeg: true,
@@ -5859,7 +5859,7 @@ const foods = [
     price: 'SR 5.00',
     priceValue: 5,
     rating: 4.6,
-    image: '/images/tahini.jpg',
+    image: '/images/tahini.jpeg',
     description: 'MT Restaurant special.',
     calories: '130 Kcal',
     isVeg: true,
@@ -5876,7 +5876,7 @@ const foods = [
     price: 'SR 3.00',
     priceValue: 3,
     rating: 4.6,
-    image: '/images/yogurt_box.jpg',
+    image: '/images/yogurt_box.jpeg',
     description: 'MT Restaurant special.',
     calories: 'N/A',
     isVeg: true,
@@ -5893,7 +5893,7 @@ const foods = [
     price: 'SR 12.00',
     priceValue: 12,
     rating: 4.6,
-    image: '/images/kunafa_cream.png',
+    image: '/images/kunafa_cream.jpeg',
     description: 'Traditional cream filling',
     calories: 'N/A',
     isVeg: true,
@@ -5910,7 +5910,7 @@ const foods = [
     price: 'SR 8.50',
     priceValue: 8.5,
     rating: 4.6,
-    image: '/images/rafif_desserts.jpg',
+    image: '/images/rafif_desserts.jpeg',
     description: 'Specialty sweet cup from Tihama Madghout',
     calories: 'N/A',
     isVeg: true,
@@ -5927,7 +5927,7 @@ const foods = [
     price: 'SR 7.50',
     priceValue: 7.5,
     rating: 4.6,
-    image: '/images/sundos_desserts.png',
+    image: '/images/sundos_desserts.jpeg',
     description: 'Specialty sweet cup from Tihama Madghout',
     calories: 'N/A',
     isVeg: true,
@@ -5944,7 +5944,7 @@ const foods = [
     price: 'SR 4.00',
     priceValue: 4,
     rating: 4.6,
-    image: '/images/pepsi_small.jpg',
+    image: '/images/pepsi_small.jpeg',
     description: 'MT Restaurant special.',
     calories: 'N/A',
     isVeg: true,
@@ -5961,7 +5961,7 @@ const foods = [
     price: 'SR 3.00',
     priceValue: 3,
     rating: 4.6,
-    image: '/images/laban_small.png',
+    image: '/images/laban_small.jpeg',
     description: 'MT Restaurant special.',
     calories: 'N/A',
     isVeg: true,
@@ -5978,7 +5978,7 @@ const foods = [
     price: 'SR 1.00',
     priceValue: 1,
     rating: 4.6,
-    image: '/images/water_bottle_small.png',
+    image: '/images/water_bottle_small.jpeg',
     description: 'MT Restaurant special.',
     calories: 'N/A',
     isVeg: true,
@@ -5995,7 +5995,7 @@ const foods = [
     price: 'SR 35.00',
     priceValue: 35,
     rating: 4.8,
-    image: '/images/beef_dry_fry_bdf_new.jpg',
+    image: '/images/beef_dry_fry_bdf_new.jpeg',
     description: 'Redtable signature dish.',
     isVeg: false,
     isTrending: true,
@@ -6003,7 +6003,10 @@ const foods = [
   }
 ];
 
-const offersData = [];
+const offersData = [
+  { id: 1, restaurantId: 21, discount: '50% OFF', image: 'https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=400&auto=format&fit=crop', desc: 'Up to 10SR on selected items' },
+  { id: 2, restaurantId: 22, discount: 'Buy 1 Get 1', image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop', desc: 'On all main courses' }
+];
 const userProfile = {
   "name": "Ahmed Ali",
   "phone": "+966 501234567",

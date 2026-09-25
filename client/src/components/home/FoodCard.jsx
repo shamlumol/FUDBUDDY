@@ -9,7 +9,7 @@ const FoodCard = ({ food, compact = false }) => {
     >
       <div className="w-full aspect-square bg-gray-50 rounded-xl mb-3 overflow-hidden relative flex items-center justify-center">
         {food.image ? (
-          <img 
+          <img decoding="async" 
             src={food.image} 
             alt={food.name} 
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 

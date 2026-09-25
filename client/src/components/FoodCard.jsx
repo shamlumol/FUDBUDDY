@@ -7,21 +7,25 @@ const FoodCard = ({ food, searchQuery = '' }) => {
   const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
-    const saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const saved = JSON.parse(localStorage.getItem(`fudbuddy_savedFoods_${userEmail}`) || '[]');
     setIsSaved(saved.some(f => f.id === food.id));
   }, [food.id]);
 
   const toggleSave = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    let saved = JSON.parse(localStorage.getItem('savedFoods') || '[]');
+    const userEmail = JSON.parse(localStorage.getItem('fudbuddy_current_user') || 'null')?.email || 'guest';
+    const storageKey = `fudbuddy_savedFoods_${userEmail}`;
+    let saved = JSON.parse(localStorage.getItem(storageKey) || '[]');
     if (isSaved) {
       saved = saved.filter(f => f.id !== food.id);
     } else {
       saved.push(food);
     }
-    localStorage.setItem('savedFoods', JSON.stringify(saved));
+    localStorage.setItem(storageKey, JSON.stringify(saved));
     setIsSaved(!isSaved);
+    window.dispatchEvent(new Event('storage'));
   };
 
   return (
@@ -36,7 +40,7 @@ const FoodCard = ({ food, searchQuery = '' }) => {
         </div>
         
         {food.image ? (
-          <img loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img decoding="async" loading="lazy" src={food.image} alt={food.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
           <span className="text-xs text-gray-400 font-bold m-auto h-full flex items-center">NO IMAGE</span>
         )}

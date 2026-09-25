@@ -1,19 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import RestaurantCard from '../home/RestaurantCard';
 import FoodCard from '../FoodCard';
 import { getRestaurants, getFoods } from '../../services/api';
 
 const SearchResults = ({ query = '', showTags = false, showHeart = false, filters = {}, initialTab = 'Restaurants' }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState(initialTab || 'Restaurants');
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(parseInt(searchParams.get('page')) || 1);
   const [totalPages, setTotalPages] = useState(1);
 
+  const prevDeps = useRef({ query, activeTab, filters });
+
   useEffect(() => {
-    setPage(1); // Reset page on new query, tab, or filters
-  }, [query, activeTab, filters]);
+    if (initialTab && (initialTab === 'Restaurants' || initialTab === 'Food') && initialTab !== activeTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
+
+  useEffect(() => {
+    if (
+      prevDeps.current.query !== query ||
+      prevDeps.current.activeTab !== activeTab ||
+      JSON.stringify(prevDeps.current.filters) !== JSON.stringify(filters)
+    ) {
+      setPage(1);
+      setSearchParams(prev => {
+        prev.set('page', '1');
+        return prev;
+      });
+      prevDeps.current = { query, activeTab, filters };
+    }
+  }, [query, activeTab, filters, setSearchParams]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +75,10 @@ const SearchResults = ({ query = '', showTags = false, showHeart = false, filter
   const handlePageChange = (newPage) => {
     if (newPage > 0 && newPage <= totalPages) {
       setPage(newPage);
+      setSearchParams(prev => {
+        prev.set('page', newPage.toString());
+        return prev;
+      });
     }
   };
 

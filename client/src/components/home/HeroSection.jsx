@@ -15,7 +15,7 @@ const HeroSection = () => {
             <p className="text-sm text-gray-500 font-medium">Delicious food for every mood</p>
           </div>
           <div className="absolute right-[-20px] top-[-10px] w-32 h-32 rounded-full overflow-hidden flex-shrink-0 z-0 opacity-90">
-             <img loading="lazy" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300" alt="Food Plate" className="w-full h-full object-cover" />
+             <img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=300" alt="Food Plate" className="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -45,7 +45,7 @@ const HeroSection = () => {
         </div>
         
         <div className="w-[380px] h-[380px] rounded-full overflow-hidden flex-shrink-0 relative shadow-xl z-10 mr-4 border-[6px] border-white">
-           <img loading="lazy" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800" alt="Food Plate" className="w-full h-full object-cover" />
+           <img decoding="async" loading="lazy" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=800" alt="Food Plate" className="w-full h-full object-cover" />
         </div>
       </section>
     </>

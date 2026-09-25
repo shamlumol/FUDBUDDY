@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import { useLocation } from 'react-router-dom';
 import Footer from '../components/layout/Footer';
 
@@ -46,6 +47,7 @@ const Search = () => {
 
   return (
     <div className="w-full bg-white min-h-screen flex flex-col">
+      <Breadcrumbs items={[{ label: 'Search' }]} />
       <main className="flex-1 w-full w-full mx-auto px-4 md:px-6 lg:px-8 pt-4 md:pt-8 pb-20 md:pb-12">
         {!isSearching ? (
           <>

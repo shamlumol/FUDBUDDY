@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-4 gap-8">
           <div className="col-span-1">
             <Link to="/" className="flex items-center mb-4 flex-shrink-0">
-              <img loading="lazy" src="/logo.png" alt="FoodBuddy Logo" className="h-10 object-contain" />
+              <img decoding="async" loading="lazy" src="/logo.png" alt="FoodBuddy Logo" className="h-10 object-contain" />
             </Link>
             <p className="text-sm text-gray-500 mb-4">
               Discover the best food and restaurants in Saudi Arabia.

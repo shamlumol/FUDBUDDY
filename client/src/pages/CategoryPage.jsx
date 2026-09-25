@@ -68,7 +68,7 @@ const CategoryPage = () => {
             Home
           </Link>
           <ChevronRight size={14} className="mx-2" />
-          <span className="text-gray-400">Categories</span>
+          <Link to="/" className="hover:text-[#8cc63f] transition-colors">Categories</Link>
           <ChevronRight size={14} className="mx-2" />
           <span className="text-gray-900 font-bold">{categoryName}</span>
         </nav>

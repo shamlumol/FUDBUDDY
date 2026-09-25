@@ -157,6 +157,22 @@ export const getRestaurants = async (params = {}) => {
     results = results.filter(r => r.rating >= minRating);
   }
 
+  // Priority sorting: boost specific restaurants for specific queries
+  if (search) {
+    const queryStr = search.toLowerCase();
+    // Arabic restaurants: MT and Al Romansiah should appear first
+    if (queryStr.includes('arabic') || queryStr.includes('mandi') || queryStr.includes('madghout') || queryStr.includes('romansiah')) {
+      const priorityNames = ['mt restaurant', 'al romansiah', 'madghout touhama'];
+      results.sort((a, b) => {
+        const aIsPriority = priorityNames.some(n => (a.name || '').toLowerCase().includes(n));
+        const bIsPriority = priorityNames.some(n => (b.name || '').toLowerCase().includes(n));
+        if (aIsPriority && !bIsPriority) return -1;
+        if (!aIsPriority && bIsPriority) return 1;
+        return 0;
+      });
+    }
+  }
+
   const pageNum = parseInt(page);
   const limitNum = parseInt(limit);
   const startIndex = (pageNum - 1) * limitNum;
@@ -178,16 +194,32 @@ export const getRestaurantById = async (id) => {
   return restaurant;
 };
 
+const computeIsVeg = (f) => {
+  if (f.isVeg !== undefined) return f;
+  const text = `${f.category || ''} ${f.name || ''} ${f.desc || ''}`.toLowerCase();
+  const isExplicitVeg = /(veg|paneer|dal|gobi|mushroom|channa|salad|aloo)/.test(text);
+  if (isExplicitVeg) return { ...f, isVeg: true };
+  const strongMeat = /(chicken|chicekn|beef|mutton|fish|prawn|squid|crab|meat|lamb|egg|omelette|omelet|kaada|quail|duck|kozhi|alfaham|shawarma|seafood|poth|irachi|erachi|meen|chemmeen|kanava|koondal|njandu)/.test(text);
+  if (strongMeat) return { ...f, isVeg: false };
+  const ambiguousMeat = /(mandi|kebab|tikka|bbq|barbeque|biriyani|biryani|65|roast|fry|chops|platter|mix)/.test(text);
+  if (ambiguousMeat) return { ...f, isVeg: false };
+  return { ...f, isVeg: true };
+};
+
 export const getFoods = async (params = {}) => {
   await delay(300);
   
-  let results = [...dbFoods];
+  let baseResults = [...dbFoods];
   
   // Merge with custom foods from localStorage
   try {
     const custom = JSON.parse(localStorage.getItem('customFoods') || '[]');
-    results = [...results, ...custom];
+    baseResults = [...baseResults, ...custom];
   } catch(e) {}
+
+  // Compute isVeg for every food item so FoodCard renders correctly
+  let results = baseResults.map(computeIsVeg);
+
   const { search, category, type, price, sort, isVeg, isAvailable, distance, rating, page = 1, limit = 10 } = params;
 
   if (search) {
@@ -279,18 +311,8 @@ export const getFoods = async (params = {}) => {
   }
 
   // Veg Only Filter
-  // Let's assume anything without meat is veg, or explicitly categorized as veg.
   if (isVeg === 'true' || isVeg === true) {
-    results = results.filter(f => {
-      const text = `${f.category || ''} ${f.name || ''} ${f.desc || ''}`.toLowerCase();
-      const isExplicitVeg = /(veg|paneer|dal|gobi|mushroom|channa|salad|aloo)/.test(text);
-      if (isExplicitVeg) return true;
-      const strongMeat = /(chicken|chicekn|beef|mutton|fish|prawn|squid|crab|meat|lamb|egg|kaada|quail|duck|kozhi|alfaham|shawarma|seafood|poth|irachi|erachi|meen|chemmeen|kanava|koondal|njandu)/.test(text);
-      if (strongMeat) return false;
-      const ambiguousMeat = /(mandi|kebab|tikka|bbq|barbeque|biriyani|biryani|65|roast|fry|chops|platter|mix)/.test(text);
-      if (ambiguousMeat) return false;
-      return true;
-    });
+    results = results.filter(f => f.isVeg);
   }
 
   // Sorting
@@ -327,7 +349,7 @@ export const getRestaurantMenu = async (restaurantId) => {
       const custom = JSON.parse(localStorage.getItem('customFoods') || '[]');
       allFoods = [...allFoods, ...custom];
     } catch(e) {}
-    return allFoods.filter(f => f.restaurantId === parseInt(restaurantId) || f.restaurantId === restaurantId);
+    return allFoods.filter(f => f.restaurantId === parseInt(restaurantId) || f.restaurantId === restaurantId).map(computeIsVeg);
 };
 
 export const getCollections = async () => {

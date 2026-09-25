@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 import { useNavigate } from 'react-router-dom';
 import { 
   Store, 
@@ -136,6 +137,7 @@ const PartnerRegistration = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20 pt-6 px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Partner with Us' }]} />
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center mb-8">
           <button onClick={() => navigate('/')} className="p-2 mr-4 bg-white rounded-full shadow-sm hover:bg-gray-50 transition-colors">

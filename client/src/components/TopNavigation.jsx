@@ -9,7 +9,7 @@ const TopNavigation = () => {
       {/* Logo */}
       <div className="flex-shrink-0 mr-8">
         <Link to="/" className="flex items-center">
-          <img loading="lazy" src="/logo.png" alt="FoodBuddy Logo" className="h-6 object-contain" />
+          <img decoding="async" loading="lazy" src="/logo.png" alt="FoodBuddy Logo" className="h-6 object-contain" />
         </Link>
       </div>
 
@@ -44,7 +44,7 @@ const TopNavigation = () => {
           <Bell size={20} />
         </button>
         <Link to="/profile" className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden border border-gray-200">
-          <img loading="lazy" src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
+          <img decoding="async" loading="lazy" src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
         </Link>
       </div>
     </div>
