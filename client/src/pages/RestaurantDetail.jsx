@@ -5,8 +5,8 @@ import { useNavigate, Link, useParams } from 'react-router-dom';
 import { getRestaurantById, getRestaurantMenu } from '../services/api';
 import { toast } from '../components/ui/Toast';
 
-const TrendingDishCard = ({ item }) => (
-  <div className="group cursor-pointer flex flex-col h-full">
+const TrendingDishCard = ({ item, restaurantId, restaurantName }) => (
+  <Link to={`/food/${item.id}`} state={{ fromRestaurant: true, restaurantId, restaurantName }} className="group flex flex-col h-full">
     <div className="w-full aspect-[4/3] rounded-3xl overflow-hidden mb-3 relative bg-gray-50">
       {item.image ? (
         <img decoding="async" loading="lazy" src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
@@ -25,7 +25,7 @@ const TrendingDishCard = ({ item }) => (
       <h4 className="text-[14px] font-extrabold text-[#112431] leading-tight line-clamp-2 pr-2">{item.name}</h4>
       <span className="text-[14px] font-extrabold text-[#8cc63f] whitespace-nowrap">{item.price || `SR ${item.priceValue}`}</span>
     </div>
-  </div>
+  </Link>
 );
 
 
@@ -148,7 +148,7 @@ const RestaurantDetail = () => {
         {/* Hero Image with Fade */}
         <div className="w-full h-[320px] relative mb-12">
           <img decoding="async" loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
+          
           
           {/* Floating Logo */}
           <div className="absolute -bottom-8 left-6 w-[100px] h-[100px] bg-white rounded-3xl p-1 shadow-lg shadow-black/5 border border-white">
@@ -233,7 +233,7 @@ const RestaurantDetail = () => {
             
             <div className="grid grid-cols-2 gap-x-4 gap-y-6 pb-4">
               {displayItems.slice((trendingPage - 1) * itemsPerPage, trendingPage * itemsPerPage).map((item, idx) => (
-                <TrendingDishCard key={idx} item={item} />
+                <TrendingDishCard key={idx} item={item} restaurantId={id} restaurantName={restaurant?.name} />
               ))}
               {displayItems.length === 0 && <p className="text-sm text-gray-400 col-span-2">No trending dishes available.</p>}
               <Pagination total={displayItems.length} itemsPerPage={itemsPerPage} currentPage={trendingPage} onPageChange={setTrendingPage} />
@@ -248,7 +248,7 @@ const RestaurantDetail = () => {
               
               <div className="grid grid-cols-2 gap-x-4 gap-y-6 pb-4">
                 {filteredBudgetItems.slice((budgetPage - 1) * itemsPerPage, budgetPage * itemsPerPage).map((item, idx) => (
-                  <TrendingDishCard key={idx} item={item} />
+                  <TrendingDishCard key={idx} item={item} restaurantId={id} restaurantName={restaurant?.name} />
                 ))}
                 <Pagination total={filteredBudgetItems.length} itemsPerPage={itemsPerPage} currentPage={budgetPage} onPageChange={setBudgetPage} />
               </div>
@@ -266,7 +266,7 @@ const RestaurantDetail = () => {
         {/* Desktop Header Image */}
         <div className="w-full h-[320px] relative mb-10">
            <img decoding="async" loading="lazy" src={restaurant.headerImage} alt={restaurant.name} className="w-full h-full object-cover" />
-           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
+           
            
            <div className="absolute top-8 right-12 flex space-x-4">
              <button className="bg-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg flex items-center text-[#112431] hover:bg-white transition-colors">
@@ -286,8 +286,8 @@ const RestaurantDetail = () => {
           
           {/* Left Column */}
           <div className="flex-1">
-            <div className="flex items-end mb-10 -mt-36 relative z-10">
-              <div className="w-36 h-36 bg-white rounded-[2.5rem] p-1.5 shadow-xl shadow-black/5 border border-white mr-8">
+            <div className="flex items-end mb-10 relative z-10">
+              <div className="w-36 h-36 bg-white rounded-[2.5rem] p-1.5 shadow-xl shadow-black/5 border border-white mr-8 -mt-16">
                 <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white flex items-center justify-center">
                   <img decoding="async" loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
                 </div>
@@ -342,7 +342,7 @@ const RestaurantDetail = () => {
               </div>
               <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
                 {displayItems.slice((trendingPage - 1) * itemsPerPage, trendingPage * itemsPerPage).map((item, idx) => (
-                  <TrendingDishCard key={idx} item={item} />
+                  <TrendingDishCard key={idx} item={item} restaurantId={id} restaurantName={restaurant?.name} />
                 ))}
                 <Pagination total={displayItems.length} itemsPerPage={itemsPerPage} currentPage={trendingPage} onPageChange={setTrendingPage} />
               </div>
@@ -355,7 +355,7 @@ const RestaurantDetail = () => {
                 </div>
                 <div className="grid grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
                   {filteredBudgetItems.slice((budgetPage - 1) * itemsPerPage, budgetPage * itemsPerPage).map((item, idx) => (
-                  <TrendingDishCard key={idx} item={item} />
+                  <TrendingDishCard key={idx} item={item} restaurantId={id} restaurantName={restaurant?.name} />
                 ))}
                 <Pagination total={filteredBudgetItems.length} itemsPerPage={itemsPerPage} currentPage={budgetPage} onPageChange={setBudgetPage} />
                 </div>
@@ -421,4 +421,8 @@ const RestaurantDetail = () => {
 };
 
 export default RestaurantDetail;
+
+
+
+
 

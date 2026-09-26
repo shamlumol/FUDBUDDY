@@ -1,7 +1,7 @@
 import Breadcrumbs from '../components/common/Breadcrumbs';
 import React, { useState } from 'react';
 import { ArrowLeft, Heart, Share2, Star } from 'lucide-react';
-import { useNavigate, Link, useParams } from 'react-router-dom';
+import { useNavigate, Link, useParams, useLocation } from 'react-router-dom';
 import { foods, restaurants } from '../data/mockData';
 import RestaurantCard from '../components/RestaurantCard';
 import { toast } from '../components/ui/Toast';
@@ -9,6 +9,10 @@ import { toast } from '../components/ui/Toast';
 const FoodDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const location = useLocation();
+  const fromRestaurant = location.state?.fromRestaurant;
+  const fromRestaurantId = location.state?.restaurantId;
+  const fromRestaurantName = location.state?.restaurantName;
   const food = foods.find(f => f.id === parseInt(id)) || foods[0];
   const restaurantList = restaurants; // Show all restaurants
 
@@ -40,7 +44,12 @@ const FoodDetails = () => {
 
   return (
     <div className="w-full bg-white md:bg-[#f9fafb] min-h-screen pb-24 md:pb-10 font-sans">
-      <Breadcrumbs items={[{ label: 'Food Details' }]} />
+      <Breadcrumbs items={fromRestaurant ? [
+        { label: fromRestaurantName || food.restaurantName || 'Restaurant', path: `/restaurant/${fromRestaurantId || food.restaurantId}` },
+        { label: 'Food Details' }
+      ] : [
+        { label: 'Food Details' }
+      ]} />
       
       {/* ========================================================= */}
       {/* MOBILE LAYOUT                                             */}
