@@ -151,7 +151,7 @@ const RestaurantDetail = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent"></div>
           
           {/* Floating Logo */}
-          <div className="absolute -bottom-8 left-6 w-[100px] h-[100px] bg-white/70 backdrop-blur-md rounded-3xl p-1 shadow-lg shadow-black/5 border border-white">
+          <div className="absolute -bottom-8 left-6 w-[100px] h-[100px] bg-white rounded-3xl p-1 shadow-lg shadow-black/5 border border-white">
             <div className="w-full h-full rounded-2xl overflow-hidden bg-white flex items-center justify-center">
               <img decoding="async" loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
             </div>
@@ -269,13 +269,13 @@ const RestaurantDetail = () => {
            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/10 to-transparent"></div>
            
            <div className="absolute top-8 right-12 flex space-x-4">
-             <button className="bg-white/90 backdrop-blur-md px-5 py-2.5 rounded-full font-bold text-xs shadow-lg flex items-center text-[#112431] hover:bg-white transition-colors">
+             <button className="bg-white px-5 py-2.5 rounded-full font-bold text-xs shadow-lg flex items-center text-[#112431] hover:bg-white transition-colors">
                OFFERS
              </button>
-             <button onClick={toggleSave} className="bg-white/90 backdrop-blur-md w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-[#112431] hover:text-[#8cc63f] transition-colors">
+             <button onClick={toggleSave} className="bg-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-[#112431] hover:text-[#8cc63f] transition-colors">
                <Heart size={20} className={isFavorite ? "fill-[#8cc63f] text-[#8cc63f]" : ""} />
              </button>
-             <button onClick={handleShare} className="bg-white/90 backdrop-blur-md w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-[#112431] hover:text-gray-600 transition-colors">
+             <button onClick={handleShare} className="bg-white w-11 h-11 flex items-center justify-center rounded-full shadow-lg text-[#112431] hover:text-gray-600 transition-colors">
                <Share2 size={20} />
              </button>
            </div>
@@ -287,7 +287,7 @@ const RestaurantDetail = () => {
           {/* Left Column */}
           <div className="flex-1">
             <div className="flex items-end mb-10 -mt-36 relative z-10">
-              <div className="w-36 h-36 bg-white/70 backdrop-blur-md rounded-[2.5rem] p-1.5 shadow-xl shadow-black/5 border border-white mr-8">
+              <div className="w-36 h-36 bg-white rounded-[2.5rem] p-1.5 shadow-xl shadow-black/5 border border-white mr-8">
                 <div className="w-full h-full rounded-[2rem] overflow-hidden bg-white flex items-center justify-center">
                   <img decoding="async" loading="lazy" src={restaurant.logo} alt={restaurant.name} className="w-full h-full object-contain p-2" />
                 </div>
@@ -421,3 +421,4 @@ const RestaurantDetail = () => {
 };
 
 export default RestaurantDetail;
+
