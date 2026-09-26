@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import Breadcrumbs from '../components/common/Breadcrumbs';
 import { ArrowLeft, Heart } from 'lucide-react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -114,7 +114,7 @@ const Offers = () => {
         </div>
 
         {/* Offer Cards Grid */}
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-5 gap-6">
           {offersData.map((offer) => {
             const restaurant = restaurants.find(r => r.id === offer.restaurantId) || restaurants[0];
             return (
