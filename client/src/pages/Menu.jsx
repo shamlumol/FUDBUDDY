@@ -3,6 +3,7 @@ import {  ArrowLeft, Search as SearchIcon, Heart , ChevronRight } from 'lucide-r
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { getRestaurantById, getRestaurantMenu } from '../services/api';
 import { toast } from '../components/ui/Toast';
+import Breadcrumbs from '../components/common/Breadcrumbs';
 
 const Menu = () => {
   const navigate = useNavigate();
